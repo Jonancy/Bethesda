@@ -1,9 +1,11 @@
+import HomePage from "./pages/homePage";
 
 function App() {
-
   return (
-   <p className="text-white bg-yellow-500">hehe</p>
-  )
+    <div className="">
+      <HomePage />
+    </div>
+  );
 }
 
-export default App
+export default App;
