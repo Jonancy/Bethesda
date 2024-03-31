@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "typeRoots": ["index.d.ts"]
+  },
+  "include": ["src/**/*.ts", "index.d.ts", "src/hooks/ScrollToTop.tsx"],
+  "lib": ["es2015"],
+  "files": ["index.d.ts"]
+}
