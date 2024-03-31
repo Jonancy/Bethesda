@@ -1,5 +1,6 @@
 import { BiRightArrowAlt } from "react-icons/bi";
 import imag from "../../assets/hero.png";
+import MainButton from "../buttons/mainButton";
 
 export default function Team() {
   return (
@@ -22,10 +23,7 @@ export default function Team() {
         ))}
       </div>
       <div className="w-full flex justify-center items-center mt-10">
-        <div className="flex gap-2 items-center text-xl font-semibold p-6 rounded-lg border-2 border-black">
-            <p>Meet the Team</p>
-            <BiRightArrowAlt />
-        </div>
+        <MainButton text={"Meet the Team"} />
         </div>
     </div>
   );

@@ -5,6 +5,9 @@ import WhatWeDo from "@/components/home/whatWeDo";
 import what from "../assets/what.png";
 import Team from "@/components/home/team";
 import GalleryHome from "@/components/home/galleryHome";
+import Mail from "@/components/home/mail";
+import NewsArticles from "@/components/home/newsArticles";
+import Footer from "@/components/footer/footer";
 
 export default function HomePage() {
   return (
@@ -24,14 +27,24 @@ export default function HomePage() {
           <div>
             <p className="text-4xl font-semibold">Know Who We Are</p>
           </div>
-            <div className="w-[90%]">
-            <p>The Bethesda International Language and Leadership Development Centre Pvt. Ltd. (The Bethesda Centre) is an initiative to offer language classes to the public in Pokhara Municipality and to equip train and lay leaders of civil society, in areas related to Pastoral Care/Counseling, entrepreneurship and management. It was registered under the Department of Industry as a Private Limited Company on July 13, 2010.</p>
+          <div className="w-[90%]">
+            <p>
+              The Bethesda International Language and Leadership Development
+              Centre Pvt. Ltd. (The Bethesda Centre) is an initiative to offer
+              language classes to the public in Pokhara Municipality and to
+              equip train and lay leaders of civil society, in areas related to
+              Pastoral Care/Counseling, entrepreneurship and management. It was
+              registered under the Department of Industry as a Private Limited
+              Company on July 13, 2010.
+            </p>
           </div>
         </div>
       </div>
       <Team />
       <GalleryHome />
-
+      <Mail />
+      <NewsArticles />
+      <Footer />
     </div>
   );
 }

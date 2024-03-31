@@ -1,5 +1,6 @@
 import { BiRightArrow, BiRightArrowAlt } from "react-icons/bi";
 import service from "../../assets/Service.png";
+import MainButton from "../buttons/mainButton";
 
 export default function OfferedServices() {
   return (
@@ -38,11 +39,8 @@ export default function OfferedServices() {
         ))}
       </div>
       <div className="w-full flex justify-center items-center">
-        <div className="flex gap-2 items-center text-xl font-semibold p-6 rounded-lg border-2 border-black">
-            <p>View All Services</p>
-            <BiRightArrowAlt />
-        </div>
-        </div>
+        <MainButton text={"View All Services"} />
+      </div>
     </div>
   );
 }
