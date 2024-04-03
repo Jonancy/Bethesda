@@ -1,10 +1,11 @@
-import HomePage from "./pages/homePage";
+import Router from "./routes/main.Routes";
 
 function App() {
+
+
+
   return (
-    <div className="">
-      <HomePage />
-    </div>
+    <Router />
   );
 }
 

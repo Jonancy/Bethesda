@@ -4,7 +4,7 @@ import MainButton from "../buttons/mainButton";
 
 export default function OfferedServices() {
   return (
-    <div className="bg-gray-100 px-20 pb-10 ">
+    <div className="bg-gray-100 px-32 pb-10 ">
       <div className="flex items-center justify-center py-16">
         <p className="text-4xl font-semibold">Services We Offer</p>
       </div>

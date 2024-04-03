@@ -2,7 +2,7 @@ import whatWe from "../../assets/whatWe.png";
 
 export default function WhatWeDo() {
   return (
-    <div className="flex gap-10 items-center py-10 px-20">
+    <div className="flex gap-10 items-center py-10 px-32">
       <img src={whatWe} className="w-[50rem] rounded-3xl"></img>
       <div className="">
         <h1>What We do </h1>

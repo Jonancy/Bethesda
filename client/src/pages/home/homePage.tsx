@@ -1,18 +1,15 @@
 import Hero from "@/components/home/hero";
-import Navbar from "@/components/home/navbar";
 import OfferedServices from "@/components/home/offeredServices";
 import WhatWeDo from "@/components/home/whatWeDo";
-import what from "../assets/what.png";
+import what from "../../assets/what.png";
 import Team from "@/components/home/team";
 import GalleryHome from "@/components/home/galleryHome";
 import Mail from "@/components/home/mail";
 import NewsArticles from "@/components/home/newsArticles";
-import Footer from "@/components/footer/footer";
 
 export default function HomePage() {
   return (
-    <div>
-      <Navbar />
+    <div className="">
       <Hero />
       <WhatWeDo />
       <OfferedServices />
@@ -44,7 +41,6 @@ export default function HomePage() {
       <GalleryHome />
       <Mail />
       <NewsArticles />
-      <Footer />
     </div>
   );
 }

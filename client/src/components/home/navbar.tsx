@@ -5,17 +5,22 @@ import { SiGmail } from "react-icons/si";
 import mainLogo from "../../assets/mainLogo.png";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const isActive = (nav: string) => {
+  return path === nav ? "text-tertiary" : "text-white";
+  };
+    
+
   return (
     <nav className="sticky top-0 z-50">
-      <div className="flex justify-between text-gray-400 bg-secondaryColor px-20 py-3 items-center">
+      <div className="flex justify-between  text-gray-400 bg-secondaryColor px-20 py-3 items-center">
         <p className="text-xs font-bold">
           CONTACT US: +977 061 581211 | bethesda.language@gmail.com
         </p>
@@ -35,21 +40,27 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex justify-between text-white text-lg font-semibold bg-primaryColor px-20 py-3 items-center">
-        <img className="w-36 h-14" src={mainLogo}></img>
-        <NavigationMenu >
+        <img className="w-36 h-14" src={mainLogo} alt="Main Logo" />
+        <NavigationMenu>
           <NavigationMenuList className="flex gap-16">
-            <p>HOME</p>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-primaryColor text-lg hover:bg-gray-500">ABOUT US</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <NavigationMenuLink>Link</NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <p>SERVICES</p>
-            <p>BLOG</p>
-            <p>NEWS & ARTICLES</p>
-            <p>CONTACT US</p>
-
+            <Link to="/" className={isActive("/")}>
+              HOME
+            </Link>
+            <Link to="/about-us" className={isActive("/about-us")}>
+              ABOUT US
+            </Link>
+            <Link to="/services" className={isActive("/services")}>
+              SERVICES
+            </Link>
+            <Link to="/blogs" className={isActive("/blogs")}>
+              BLOGS
+            </Link>
+            <Link to="/newsArticles" className={isActive("/newsArticles")}>
+              NEWS & ARTICLES
+            </Link>
+            <Link to="/contact-us" className={isActive("/contact-us")}>
+              CONTACT US
+            </Link>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
