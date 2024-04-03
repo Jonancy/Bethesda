@@ -14,13 +14,8 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(cuid())
-  name String
-  Book Book[]
-}
-
-model Book {
-  bookId   String @id @default(cuid())
-  author   User   @relation(fields: [authorid], references: [id])
-  authorid String
+  id       String @id @default(cuid())
+  name     String
+  username String @unique
+  password String
 }
