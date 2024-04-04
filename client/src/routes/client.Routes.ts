@@ -7,6 +7,8 @@ const Services = lazy(() => import("@/pages/home/services"));
 const AboutUs = lazy(() => import("@/pages/home/aboutUs"));
 const HomePage = lazy(() => import("@/pages/home/homePage"));
 const NewsArticlesLists = lazy(() => import("@/pages/home/newsArticles"));
+const SpeciicServices = lazy(()=> import("@/pages/home/speciicServices")) ;
+const  SpecificBlogs =lazy(()=> import("@/pages/home/specificBlogs")) ;
 
 
 export const vendorRoutes = [
@@ -48,9 +50,18 @@ export const vendorRoutes = [
     element: ContactUs,
     hasHomeLayout: true,
   },
-
-
-
+  {
+    id: "blogs",
+    path: "/services/specific-service",
+    element: SpeciicServices,
+    hasHomeLayout: true,
+  },
+  {
+    id: "blogs",
+    path: "/services/specific-blogs",
+    element: SpecificBlogs,
+    hasHomeLayout: true,
+  },
   {
     id: "login",
     path: "/admin/login",

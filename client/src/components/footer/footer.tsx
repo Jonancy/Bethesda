@@ -16,7 +16,7 @@ export default function Footer() {
     { service_name: "Personality Development Training (Child Psychology)" },
   ];
   return (
-    <footer className="bg-primaryColor mt-10">
+    <footer className="bg-primaryColor ">
       <div className="flex  justify-between px-20 py-10">
         <div className="max-w-sm">
           <div className="mb-6 flex h-[9rem] items-center space-x-2">
