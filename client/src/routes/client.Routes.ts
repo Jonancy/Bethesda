@@ -1,5 +1,6 @@
 import dashboardAdmin from "@/pages/Dashboard/dashboard.admin";
 import Login from "@/pages/Dashboard/login.admin";
+import ContactUs from "@/pages/home/contactUs";
 import { lazy } from "react";
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
 const Services = lazy(() => import("@/pages/home/services"));
@@ -42,10 +43,18 @@ export const vendorRoutes = [
     hasHomeLayout: true,
   },
   {
+    id: "contactus",
+    path: "/contact-us",
+    element: ContactUs,
+    hasHomeLayout: true,
+  },
+
+
+
+  {
     id: "login",
     path: "/admin/login",
     element: Login,
-    hasAdminLayout: true,
   },
   {
     id: "dashboard",

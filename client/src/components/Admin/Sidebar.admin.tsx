@@ -1,13 +1,22 @@
+import { clearUserData, setUserData } from "@/utils/authStorage";
 import logo from "../../assets/mainLogo.png";
+import { Button } from "../ui/button";
 
 function SideBarAdmin() {
+  const handleLogout = () => {
+    clearUserData();
+    setUserData({ username: "", token: "" });
+  };
   return (
     <>
       <div className="flex h-screen flex-col justify-between border-e bg-white">
         <div className="px-4 py-6">
-          <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
-            Logo
-          </span>
+          <Button
+            className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-sm text-gray-600 hover:bg-gray-400"
+            onClick={handleLogout}
+          >
+            Log out
+          </Button>
 
           <ul className="mt-6 space-y-1">
             <li>
@@ -137,10 +146,7 @@ function SideBarAdmin() {
         </div>
 
         <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 ">
-          <a
-            href="#"
-            className="flex items-center bg-primaryColor p-4 hover:bg-gray-50 "
-          >
+          <a href="#" className="flex items-center bg-primaryColor p-4">
             <img alt="" src={logo} className=" w-52 object-cover" />
 
             {/* <div>
