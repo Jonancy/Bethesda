@@ -1,12 +1,14 @@
 import { clearUserData, setUserData } from "@/utils/authStorage";
 import logo from "../../assets/mainLogo.png";
 import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
 function SideBarAdmin() {
   const handleLogout = () => {
     clearUserData();
     setUserData({ username: "", token: "" });
   };
+  const url = "admin";
   return (
     <>
       <div className="flex h-screen flex-col justify-between border-e bg-white">
@@ -72,21 +74,37 @@ function SideBarAdmin() {
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                to={`/${url}/update-about-us`}
                 className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               >
-                Billing
-              </a>
+                About Us
+              </Link>
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                to={`/${url}/add-services`}
                 className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               >
-                Invoices
-              </a>
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={`/${url}/add-blog`}
+                className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={`/${url}/add-team-member`}
+                className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                Team Members
+              </Link>
             </li>
 
             <li>

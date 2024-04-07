@@ -1,5 +1,9 @@
+import AboutUSAdmin from "@/pages/Dashboard/aboutUs.admin";
+import AddTeamMemberAdmin from "@/pages/Dashboard/addTeamMember.admin";
+import AddBlogAdmin from "@/pages/Dashboard/addBlog.admin";
 import dashboardAdmin from "@/pages/Dashboard/dashboard.admin";
 import Login from "@/pages/Dashboard/login.admin";
+import AddServicesAdmin from "@/pages/Dashboard/AddServices.admin";
 import ContactUs from "@/pages/home/contactUs";
 import { lazy } from "react";
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
@@ -73,4 +77,29 @@ export const vendorRoutes = [
     element: dashboardAdmin,
     hasAdminLayout:true,
   },
+  {
+    id: "admin-about-us",
+    path: "/admin/update-about-us",
+    element: AboutUSAdmin,
+    hasAdminLayout:true,
+  },
+  {
+    id: "admin-services",
+    path: "/admin/add-services",
+    element: AddServicesAdmin,
+    hasAdminLayout:true,
+  },
+  {
+    id: "admin-blog",
+    path: "/admin/add-blog",
+    element: AddBlogAdmin,
+    hasAdminLayout:true,
+  },
+  {
+    id: "admin-add-team-member",
+    path: "/admin/add-team-member",
+    element: AddTeamMemberAdmin,
+    hasAdminLayout:true,
+  },
+
 ]
