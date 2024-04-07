@@ -19,3 +19,69 @@ model User {
   username String @unique
   password String
 }
+
+model Page1 {
+  id            Int    @id @unique @default(autoincrement())
+  hero          String
+  whatWeDoImage String
+  welcome       String
+  whatWeDo      String
+  whoWeAre      String
+}
+
+model Gallery {
+  id    Int    @id @unique @default(autoincrement())
+  image String
+}
+
+model Designation {
+  id    Int    @id @unique @default(autoincrement())
+  type  String @unique
+  teams Team[]
+}
+
+model Post {
+  id    Int    @id @unique @default(autoincrement())
+  type  String @unique
+  teams Team[]
+}
+
+model Team {
+  id            String      @id @unique @default(cuid())
+  name          String
+  profile       String
+  designation   Designation @relation(fields: [designationId], references: [id])
+  designationId Int
+  post          Post        @relation(fields: [postId], references: [id])
+  postId        Int
+}
+
+// enum Designation {
+//   Chair_Person
+//   Vice_Chair_Person
+//   Treasurer
+//   Advisory
+//   Board_Member
+//   Finance_Advisory
+// }
+
+// model TeamMembers {
+//   id          String      @id @unique @default(cuid())
+//   name        String
+//   profile     String
+//   designation Designation
+// }
+
+model NewsAtricles {
+  id      String @id @unique @default(cuid())
+  title   String
+  content String
+  picture String
+}
+
+model Blogs {
+  id      String @id @unique @default(cuid())
+  title   String
+  content String
+  picture String
+}

@@ -6,17 +6,43 @@ import Team from "@/components/home/team";
 import GalleryHome from "@/components/home/galleryHome";
 import Mail from "@/components/home/mail";
 import NewsArticles from "@/components/home/newsArticles";
+import { getPage1Details } from "@/Services/user/endPoints.user.services";
+import { useEffect, useState } from "react";
+import { HeroDetails, WhoWeareDetails } from "@/types";
+import { WhatWeDoDetails } from '@/types';
+import hehe from "../../assets/what.png"
 
 export default function HomePage() {
+  const [heroDetails, setHeroDetails] = useState<HeroDetails>({ hero: '', welcome: '' });
+  const [whatWeDoDetails, setWhatWeDoDetails] = useState<WhatWeDoDetails>({whatWeDo:"",whatWeDoImage:""})
+  const [whoWeAreDetails, setWhoWeAreDetails] = useState<WhoWeareDetails>();
+  // const [teamMembers, setTeamMembers] = useState<>([]);
+  const getPageDetails = async () => {
+    try {
+      const res = await getPage1Details();
+      console.log(res.data);
+      let pageDetails = res.data.page1Details.basicDetails;
+      setHeroDetails({ hero: pageDetails.hero, welcome: pageDetails.welcome });
+      setWhatWeDoDetails({whatWeDo:pageDetails.whatWeDo, whatWeDoImage:pageDetails.whatWeDoImage})
+      setWhoWeAreDetails({whoWeAre:pageDetails.whoWeAre, whoWeAreImage:hehe})
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getPageDetails();
+  }, []);
+  
   return (
     <div className="">
-      <Hero />
-      <WhatWeDo />
+      <Hero hero={heroDetails.hero} welcome={heroDetails.welcome} />
+      <WhatWeDo whatWeDoImage={whatWeDoDetails.whatWeDoImage} whatWeDo={whatWeDoDetails.whatWeDo} />
       <OfferedServices />
       <div
         className=" w-full h-[20rem]  bg-center bg-no-repeat bg-cover z-10 "
         style={{
-          backgroundImage: `url(${what})`,
+          backgroundImage: `url(${whoWeAreDetails?.whoWeAreImage})`,
           backgroundAttachment: "fixed",
         }}
       >
@@ -26,13 +52,7 @@ export default function HomePage() {
           </div>
           <div className="w-[90%]">
             <p>
-              The Bethesda International Language and Leadership Development
-              Centre Pvt. Ltd. (The Bethesda Centre) is an initiative to offer
-              language classes to the public in Pokhara Municipality and to
-              equip train and lay leaders of civil society, in areas related to
-              Pastoral Care/Counseling, entrepreneurship and management. It was
-              registered under the Department of Industry as a Private Limited
-              Company on July 13, 2010.
+              {whoWeAreDetails?.whoWeAre}
             </p>
           </div>
         </div>
