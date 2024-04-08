@@ -1,8 +1,8 @@
 import { prisma } from "../../server";
 import { Request, Response } from "express";
 
-class ClientController {
-  getPage1Details = async (req: Request, res: Response) => {
+
+export const  getPage1Details = async (req: Request, res: Response) => {
     try {
       const basicDetails = await prisma.page1.findFirst();
       const teamMembers = await prisma.team.findMany({
@@ -34,8 +34,4 @@ class ClientController {
       res.status(500).json({ error: e.message });
     }
   };
-}
 
-const clientController = new ClientController();
-
-export default clientController;
