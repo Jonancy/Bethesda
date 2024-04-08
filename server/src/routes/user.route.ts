@@ -4,12 +4,12 @@ import { deleteUserById, getAllUsers, getCurrentUserProfile, getUserById, login,
 import  {authMiddleware}  from '../middleware/auth.middleware';
 
 
-const userRouter: Router = Router();
+const userRoutes: Router = Router();
 
-userRouter.post("/login", login);
-userRouter.get("/me",authMiddleware, me);
-userRouter.get("/my-profile",authMiddleware, getCurrentUserProfile);
-userRouter.get("/all", getAllUsers);
-userRouter.get("/:id", getUserById);
+userRoutes.post("/login", login);
+userRoutes.get("/me",authMiddleware, me);
+userRoutes.get("/my-profile",authMiddleware, getCurrentUserProfile);
+userRoutes.get("/all", getAllUsers);
+userRoutes.get("/:id", getUserById);
 
-export default userRouter;
+export default userRoutes;
