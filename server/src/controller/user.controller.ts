@@ -11,12 +11,12 @@ export const login = async (req: Request, res: Response) => {
       const { username, password } = req.body;
 
   
-      const user = await prisma.user.findUnique({ where: { username } });
+      const user = await prisma.user.findUnique({ where: username });
       if (!user) {
         return res.status(400).json({ error: "User doesn't exist" });
       }
   
-      const isPasswordValid = (await prisma.user.findUnique({ where: { username , password } }));
+      const isPasswordValid = compareSync(password, user.password);
       if (!isPasswordValid) {
         return res.status(400).json({ error: "Invalid credentials" });
       }
