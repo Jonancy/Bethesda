@@ -8,7 +8,7 @@ import Mail from "@/components/home/mail";
 import NewsArticles from "@/components/home/newsArticles";
 import { getPage1Details } from "@/Services/user/endPoints.user.services";
 import { useEffect, useState } from "react";
-import { HeroDetails, WhoWeareDetails } from "@/types";
+import { HeroDetails, TeamMembers, WhoWeareDetails } from "@/types";
 import { WhatWeDoDetails } from '@/types';
 import hehe from "../../assets/what.png"
 
@@ -16,7 +16,8 @@ export default function HomePage() {
   const [heroDetails, setHeroDetails] = useState<HeroDetails>({ hero: '', welcome: '' });
   const [whatWeDoDetails, setWhatWeDoDetails] = useState<WhatWeDoDetails>({whatWeDo:"",whatWeDoImage:""})
   const [whoWeAreDetails, setWhoWeAreDetails] = useState<WhoWeareDetails>();
-  // const [teamMembers, setTeamMembers] = useState<>([]);
+  const [teamMembers, setTeamMembers] = useState<TeamMembers[]>([]);
+
   const getPageDetails = async () => {
     try {
       const res = await getPage1Details();
@@ -25,11 +26,15 @@ export default function HomePage() {
       setHeroDetails({ hero: pageDetails.hero, welcome: pageDetails.welcome });
       setWhatWeDoDetails({whatWeDo:pageDetails.whatWeDo, whatWeDoImage:pageDetails.whatWeDoImage})
       setWhoWeAreDetails({whoWeAre:pageDetails.whoWeAre, whoWeAreImage:hehe})
+      setTeamMembers(res.data?.page1Details?.teamMembers)
+      
     } catch (e) {
       console.log(e);
     }
   };
 
+  console.log(teamMembers);
+  
   useEffect(() => {
     getPageDetails();
   }, []);
@@ -57,7 +62,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <Team />
+      <Team teamMembers={teamMembers}/>
       <GalleryHome />
       <Mail />
       <NewsArticles />

@@ -1,14 +1,17 @@
-import { BiRightArrowAlt } from "react-icons/bi";
+import { TeamMembers } from "@/types";
 import imag from "../../assets/hero.png";
 import MainButton from "../buttons/mainButton";
 
-export default function Team() {
+
+export default function Team({ teamMembers }: { teamMembers: TeamMembers[] }) {
+  console.log(teamMembers);
+  
   return (
     <div className="py-10 px-20">
       <h1 className=" text-center text-3xl pb-16">Meet Our Amazing Team</h1>
       <div className="grid grid-cols-3 w-full gap-10">
-        {[1, 2, 3].map(() => (
-          <div className="rounded-xl">
+        {[1, 2, 3].map((index) => (
+          <div className="rounded-xl" key={index}>
             <img
               className="h-[30rem] object-cover rounded-t-xl"
               src={imag}
