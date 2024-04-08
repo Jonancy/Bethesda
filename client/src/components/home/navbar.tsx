@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50">
       <div className="flex justify-between  text-gray-400 bg-secondaryColor px-20 py-3 items-center">
-        <p className="text-xs font-bold">
+        <p className="text-xs font-bold tracking-wider">
           CONTACT US: +977 061 581211 | bethesda.language@gmail.com
         </p>
         <div className="flex gap-2 items-center">
