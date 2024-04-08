@@ -14,36 +14,45 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(cuid())
-  name     String
-  username String @unique
-  password String
+  id        String    @id @default(cuid())
+  name      String
+  password  String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Page1 {
-  id            Int    @id @unique @default(autoincrement())
+  id            Int       @id @unique @default(autoincrement())
   hero          String
   whatWeDoImage String
   welcome       String
   whatWeDo      String
   whoWeAre      String
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
 }
 
 model Gallery {
-  id    Int    @id @unique @default(autoincrement())
-  image String
+  id        Int       @id @unique @default(autoincrement())
+  image     String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Designation {
-  id    Int    @id @unique @default(autoincrement())
-  type  String @unique
-  teams Team[]
+  id        Int       @id @unique @default(autoincrement())
+  type      String    @unique
+  teams     Team[]
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Post {
-  id    Int    @id @unique @default(autoincrement())
-  type  String @unique
-  teams Team[]
+  id        Int       @id @unique @default(autoincrement())
+  type      String    @unique
+  teams     Team[]
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Team {
@@ -54,6 +63,8 @@ model Team {
   designationId Int
   post          Post        @relation(fields: [postId], references: [id])
   postId        Int
+  createdAt     DateTime?   @default(now())
+  updatedAt     DateTime?   @updatedAt
 }
 
 // enum Designation {
@@ -73,15 +84,19 @@ model Team {
 // }
 
 model NewsAtricles {
-  id      String @id @unique @default(cuid())
-  title   String
-  content String
-  picture String
+  id        String    @id @unique @default(cuid())
+  title     String
+  content   String
+  picture   String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Blogs {
-  id      String @id @unique @default(cuid())
-  title   String
-  content String
-  picture String
+  id        String    @id @unique @default(cuid())
+  title     String
+  content   String
+  picture   String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
