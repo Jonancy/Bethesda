@@ -1,8 +1,8 @@
 import { prisma } from "../../server";
 import { Request, Response } from "express";
 
-class TeamMembersController {
-  getTeamMembers = async (req: Request, res: Response) => {
+
+ export const getTeamMembers = async (req: Request, res: Response) => {
     try {
       const teamMembers = await prisma.team.findMany({
         include: {
@@ -24,8 +24,5 @@ class TeamMembersController {
       res.status(500).json({ error: e.message });
     }
   };
-}
 
-const teamMembersController = new TeamMembersController();
 
-export default teamMembersController;
