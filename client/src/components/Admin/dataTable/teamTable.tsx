@@ -24,19 +24,11 @@ import {
 // import AllGenreDetails from "@/Services/Genre/getAllGenreServices";
 // import { genreDetails } from "@/types";
 import { Link } from "react-router-dom";
-
-// Modify the Payment type to Genre
-export type Genre = {
-  id: string;
-  name: string;
-  description?: string;
-  coverImage: string; // Assuming coverImage is a string representing the image URL
-  createdAt: string; // You might want to use Date type if appropriate
-  updatedAt: string; // You might want to use Date type if appropriate
-};
+import GetAllMemberAdmin from "@/Services/teamMember/getAllTeamMember.services";
+import { TeamMembers } from "@/types";
 
 // Modify the columns accordingly
-export const columns: ColumnDef<genreDetails>[] = [
+export const columns: ColumnDef<TeamMembers>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -44,40 +36,39 @@ export const columns: ColumnDef<genreDetails>[] = [
     cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
   },
   {
-    accessorKey: "coverImage",
-    header: "Cover Image",
+    accessorKey: "profile",
+    header: "profile",
     cell: ({ row }) => (
       <img
         className="aspect-square h-14 w-10 rounded-sm object-cover "
-        src={row.getValue("coverImage")}
+        src={row.getValue("profile")}
       />
     ),
   },
   {
-    accessorKey: "description",
-    header: "Description",
-    cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("description")}</div>
-    ),
+    accessorKey: "designation.type",
+    header: "Designation",
+  },
+  {
+    accessorKey: "post.type",
+    header: "Post",
   },
   {
     accessorKey: "createdAt",
     header: "Created At",
-    cell: ({ row }) => <div>{row.getValue("createdAt")}</div>,
   },
   {
     accessorKey: "updatedAt",
     header: "Updated At",
-    cell: ({ row }) => <div>{row.getValue("updatedAt")}</div>,
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const genre = row.original;
+      const member = row.original;
       return (
         <div>
-          <Link to={`/dashboard/admin/edit/genre/${genre.id}`}>
+          <Link to={`/admin/team-member/${member.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
         </div>
@@ -86,8 +77,8 @@ export const columns: ColumnDef<genreDetails>[] = [
   },
 ];
 
-export function GenreDetailsTable() {
-  const { data, loading, error } = AllGenreDetails();
+export function MemberDetailsTable() {
+  const { data, loading, error } = GetAllMemberAdmin();
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(

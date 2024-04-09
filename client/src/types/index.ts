@@ -13,16 +13,22 @@ export type WhoWeareDetails = {
   whoWeAreImage: string;
 };
 
-export interface TeamMembers {
+export type TeamMembers =  {
   id: string;
   name: string;
   profile: string;
-  designationId: Number;
-  postId: Number;
+  designationId: number;
+  postId: number;
   designation: {
     type: string;
   };
   post: {
     type: string;
   };
-};
+}
+
+export type Blogs = {
+  id: string;
+  
+}
+
