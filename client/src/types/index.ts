@@ -17,12 +17,20 @@ export interface TeamMembers {
   id: string;
   name: string;
   profile: string;
-  designationId: Number;
-  postId: Number;
+  designationId: number;
+  postId: number;
   designation: {
     type: string;
   };
   post: {
     type: string;
   };
+};
+
+export interface NewsArticle {
+  id: string;
+  title: string;
+  content: string;
+  picture: string;
+  createdAt: string;
 };
