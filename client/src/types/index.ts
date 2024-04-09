@@ -30,5 +30,13 @@ export type TeamMembers =  {
 export type Blogs = {
   id: string;
   
-}
+};
 
+
+export interface NewsArticle {
+  id: string;
+  title: string;
+  content: string;
+  picture: string;
+  createdAt: string;
+}

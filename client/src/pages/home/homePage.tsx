@@ -3,13 +3,12 @@ import OfferedServices from "@/components/home/offeredServices";
 import WhatWeDo from "@/components/home/whatWeDo";
 import Team from "@/components/home/team";
 import GalleryHome from "@/components/home/galleryHome";
-import Mail from "@/components/home/mail";
-import NewsArticles from "@/components/home/newsArticles";
-import { getPage1Details } from "@/Services/user/endPoints.user.services";
 import { useEffect, useState } from "react";
-import { HeroDetails, TeamMembers, WhoWeareDetails } from "@/types";
+import { HeroDetails, NewsArticle, TeamMembers, WhoWeareDetails } from "@/types";
 import { WhatWeDoDetails } from "@/types";
 import hehe from "../../assets/what.png";
+import { getPage1Details } from "@/Services/pages/page1.service";
+import NewsArticles from "@/components/home/newsArticles";
 
 export default function HomePage() {
   const [heroDetails, setHeroDetails] = useState<HeroDetails>({
@@ -18,10 +17,11 @@ export default function HomePage() {
   });
   const [whatWeDoDetails, setWhatWeDoDetails] = useState<WhatWeDoDetails>({
     whatWeDo: "",
-    whatWeDoImage: "",
+    whatWeDoImage: "",  
   });
   const [whoWeAreDetails, setWhoWeAreDetails] = useState<WhoWeareDetails>();
   const [teamMembers, setTeamMembers] = useState<TeamMembers[]>([]);
+  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
 
   const getPageDetails = async () => {
     try {
@@ -38,17 +38,20 @@ export default function HomePage() {
         whoWeAreImage: hehe,
       });
       setTeamMembers(res.data?.page1Details?.teamMembers);
+      setNewsArticles(res.data?.page1Details?.newsArticles)
     } catch (e) {
       console.log(e);
     }
   };
 
+  
   useEffect(() => {
     getPageDetails();
   }, []);
 
+  
   return (
-    <div className="">
+    <div className="mb-20">
       <Hero hero={heroDetails.hero} welcome={heroDetails.welcome} />
       <WhatWeDo
         whatWeDoImage={whatWeDoDetails.whatWeDoImage}
@@ -74,7 +77,7 @@ export default function HomePage() {
       <Team teamMembers={teamMembers} />
       <GalleryHome />
       {/* <Mail /> */}
-      <NewsArticles />
+      <NewsArticles newsArticleLists={newsArticles}/>
     </div>
   );
 }

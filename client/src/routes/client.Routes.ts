@@ -19,7 +19,7 @@ const  SpecificBlogs =lazy(()=> import("@/pages/home/specificBlogs")) ;
 export const vendorRoutes = [
   //!Need to put the id of the vendors on to the url
 
-  {
+  { 
     id: "home",
     path: "/",
     element: HomePage,

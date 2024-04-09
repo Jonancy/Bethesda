@@ -11,21 +11,17 @@ export const login = async (req: Request, res: Response) => {
       const { username, password } = req.body;
 
   
-      const user = await prisma.user.findUnique({ where: { username } });
+      const user = await prisma.user.findUnique({ where: username });
       if (!user) {
         return res.status(400).json({ error: "User doesn't exist" });
       }
   
-      const isPasswordValid = (await prisma.user.findUnique({ where: { username , password } }));
+      const isPasswordValid = (await prisma.user.findFirst({ where: { username , password } }));
       if (!isPasswordValid) {
         return res.status(400).json({ error: "Invalid credentials" });
       }
-      // const isPasswordValid = (await bcrypt.compare(password, user.password));
-      // if (!isPasswordValid) {
-      //   return res.status(400).json({ error: "Invalid credentials" });
-      // }
+   
   
-      // Return limited user data and token as JSON response
       const limitedUserData = {
         username: user.username,
       };

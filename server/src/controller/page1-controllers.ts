@@ -10,7 +10,7 @@ export const  getPage1Details = async (req: Request, res: Response) => {
         include: {
           designation: {
             select: {
-              type: true, // Include only the 'type' field from the 'designation' relation
+              type: true, 
             },
           },
           post: {
@@ -20,13 +20,14 @@ export const  getPage1Details = async (req: Request, res: Response) => {
           },
         },
       });
+      
 
-      // const newsArticles = await prisma.newsAtricles.findMany({ take: 3,select:{id:true,title:true,content:true,picture:true,createdAt:true} });
+      const newsArticles = await prisma.newsAtricles.findMany({ take: 3,select:{id:true,title:true,content:true,picture:true,createdAt:true} });
 
       const page1Details = {
         basicDetails,
         teamMembers,
-        // newsArticles,
+        newsArticles,
       };
 
       res.status(200).json({ page1Details });

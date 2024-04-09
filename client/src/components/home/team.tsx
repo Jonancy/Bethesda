@@ -10,7 +10,7 @@ export default function Team({ teamMembers }: { teamMembers: TeamMembers[] }) {
     <div className="py-10 px-20">
       <h1 className="text-center text-3xl pb-16">Meet Our Amazing Team</h1>
       <div className="grid grid-cols-3 w-full gap-10">
-        {teamMembers.map((member, index) => (
+        {teamMembers?.map((member, index) => (
           <div className="rounded-xl" key={index}>
             <img
               className="h-[30rem] object-cover rounded-t-xl"

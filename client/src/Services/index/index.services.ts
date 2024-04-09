@@ -1,8 +1,14 @@
 import axios from "axios";
 
+const baseURL = "http://localhost:3001/api/v1/";
+const token = localStorage.getItem("token")?.replace(/"/g, "");
+
 export const url = axios.create({ 
-    baseURL: "http://localhost:3001/api/v1/" ,
+    baseURL: baseURL,
     headers: {
-        "Authorization": `Bearer ${localStorage.getItem("token")?.replace(/"/g, "")}`,
+        "Authorization": `Bearer ${token}`,
     }
 });
+
+
+
