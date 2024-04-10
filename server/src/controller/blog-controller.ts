@@ -15,8 +15,13 @@ export const getAllBlogs = async (req: Request, res: Response) => {
 
 
 export const addBlog = async (req: Request, res: Response) => {
-  const { title,picture,content  } = req.body;
+  const { title,content  } = req.body;
   try {
+    let pictureFile = req.file;
+    console.log(req.file);
+    const baseURL = 'http://localhost:3001/';
+
+    const picture = pictureFile ? baseURL + pictureFile.path : null;
     const teamMember = await prisma.blogs.create({ 
       data:{
         title,
@@ -24,7 +29,7 @@ export const addBlog = async (req: Request, res: Response) => {
         picture,
       }
     })
-    res.status(200).json({ teamMember });
+    res.status(200).json({message:"Blogs posted successfully!" });
   }catch(e){
     res.status(500).json({ error: e.message }); 
   }
@@ -33,9 +38,15 @@ export const addBlog = async (req: Request, res: Response) => {
 // Controller function to update a team by ID
 export const updateBlogById = async (req: Request, res: Response): Promise<void> => {
 const { id } = req.params;
-const { title,picture,content  } = req.body;
+const { title,content  } = req.body;
 
 try {
+
+  let pictureFile = req.file;
+    console.log(req.file);
+    const baseURL = 'http://localhost:3001/';
+
+  const picture = pictureFile ? baseURL + pictureFile.path : null;
   const updatedBlog = await prisma.blogs.update({
     where: {
       id: id,
@@ -47,7 +58,7 @@ try {
     },
   });
 
-  res.status(200).json(updatedBlog);
+  res.status(200).json({message:"Blogs updated successfully!" });
 } catch (error) {
   console.error('Error updating blog by ID:', error);
   res.status(500).json({ error: 'Internal server error' });
@@ -65,7 +76,7 @@ try {
     },
   });
 
-  res.status(204).end();
+  res.status(200).json({message:"Blogs deleted successfully!" });
 } catch (error) {
   console.error('Error deleting blog by ID:', error);
   res.status(500).json({ error: 'Internal server error' });

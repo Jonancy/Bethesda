@@ -15,8 +15,14 @@ export const getNewsArticles = async (req: Request, res: Response, next: NextFun
 
 // Controller function to add a news article
 export const addNewsArticle = async (req: Request, res: Response, next: NextFunction) => {
-  const { title, content, picture } = req.body;
+  const { title, content } = req.body;
   try {
+    let pictureFile = req.file;
+    console.log(req.file);
+    const baseURL = 'http://localhost:3001/';
+
+  const picture = pictureFile ? baseURL + pictureFile.path : null;
+    
     const newsArticle = await prisma.newsArticles.create({
       data: {
         title,
@@ -33,9 +39,15 @@ export const addNewsArticle = async (req: Request, res: Response, next: NextFunc
 // Controller function to update a news article by ID
 export const updateNewsArticleById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const { id } = req.params;
-  const { title, content, picture } = req.body;
+  const { title, content } = req.body;
 
   try {
+
+    let pictureFile = req.file;
+    console.log(req.file);
+    const baseURL = 'http://localhost:3001/';
+
+  const picture = pictureFile ? baseURL + pictureFile.path : null;
     const updatedNewsArticle = await prisma.newsArticles.update({
       where: {
         id: id,

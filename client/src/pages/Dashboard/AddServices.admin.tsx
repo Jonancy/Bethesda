@@ -22,13 +22,6 @@ function AddServicesAdmin() {
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <img
-              alt="Image"
-              className="border border-gray-200 w-80 h-80 rounded-md overflow-hidden object-cover object-center"
-              src="/placeholder.svg"
-            />
-          </div>
           <Label className="block" htmlFor="what-image">
             Image
           </Label>

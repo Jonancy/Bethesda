@@ -20,6 +20,8 @@ app.use('/uploads/blogs', express.static('uploads/blogs'));
 app.use('/uploads/company', express.static('uploads/company'));
 app.use('/uploads/services', express.static('uploads/services'));
 app.use('/uploads/team', express.static('uploads/team'));
+app.use('/uploads/news', express.static('uploads/news'));
+
 
 
 app.use(express.json());

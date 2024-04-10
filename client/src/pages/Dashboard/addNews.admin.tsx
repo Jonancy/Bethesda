@@ -1,4 +1,5 @@
 import { addBlogs } from "@/Services/blogs/blogs.service";
+import { addNews } from "@/Services/newsArticles/newsArticles.service";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,7 +16,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-function AddBlogAdmin() {
+function AddNewsAdmin() {
   const initialValues = {
     title: "",
     content: "",
@@ -51,16 +52,16 @@ function AddBlogAdmin() {
       }
 
       try {
-        await addBlog(formData);
+        await addNewsArticles(formData);
       } catch (e) {
         console.error(e);
       }
     },
   });
 
-  const addBlog = async (values: FormData) => {
+  const addNewsArticles = async (values: FormData) => {
     try {
-      const res = await addBlogs(values);
+      const res = await addNews(values);
       console.log(res.data);
       toast.success(res.data.message)
     } catch (e: any) {
@@ -72,9 +73,9 @@ function AddBlogAdmin() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Add Blog</CardTitle>
+        <CardTitle>Add News</CardTitle>
         <CardDescription>
-          Make your edits and click save to add new Blog section.
+          Make your edits and click save to add new News section.
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -138,4 +139,4 @@ function AddBlogAdmin() {
     </Card>
   );
 }
-export default AddBlogAdmin;
+export default AddNewsAdmin;

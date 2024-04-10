@@ -10,7 +10,6 @@ function SideBarAdmin() {
   };
   const url = "admin";
   return (
-    <>
       <div className="flex h-screen flex-col justify-between border-e bg-white">
         <div className="px-4 py-6">
           <Button
@@ -22,12 +21,12 @@ function SideBarAdmin() {
 
           <ul className="mt-6 space-y-1">
             <li>
-              <a
-                href="#"
+            <Link
+                to={`/${url}/main-details`}
                 className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
               >
-                General
-              </a>
+                Main Details
+              </Link>
             </li>
 
             <li>
@@ -75,15 +74,6 @@ function SideBarAdmin() {
 
             <li>
               <Link
-                to={`/${url}/update-about-us`}
-                className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-              >
-                About Us
-              </Link>
-            </li>
-
-            <li>
-              <Link
                 to={`/${url}/add-services`}
                 className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               >
@@ -98,6 +88,15 @@ function SideBarAdmin() {
                 Blog
               </Link>
             </li>
+            <li>
+              <Link
+                to={`/${url}/add-news`}
+                className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                News Articles
+              </Link>
+            </li>
+           
             <li>
               <Link
                 to={`/${url}/add-team-member`}
@@ -177,7 +176,6 @@ function SideBarAdmin() {
           </a>
         </div>
       </div>
-    </>
   );
 }
 export default SideBarAdmin;

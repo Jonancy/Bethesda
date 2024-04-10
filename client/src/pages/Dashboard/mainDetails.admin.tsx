@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { getAboutUsServices } from "@/Services/aboutUs/aboutUs.service";
-import { Button } from "@/components/ui/button";
+
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -20,7 +18,7 @@ import {
 import { MainDetails } from "@/types";
 import { toast } from "react-toastify";
 
-const AboutUSAdmin = () => {
+const MainDetailsAdmin = () => {
   const initialValues = {
     company_name: "",
     phone_number: 0,
@@ -437,4 +435,4 @@ const AboutUSAdmin = () => {
   );
 };
 
-export default AboutUSAdmin;
+export default MainDetailsAdmin;

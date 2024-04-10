@@ -1,4 +1,3 @@
-import AboutUSAdmin from "@/pages/Dashboard/aboutUs.admin";
 import AddTeamMemberAdmin from "@/pages/Dashboard/addTeamMember.admin";
 import AddBlogAdmin from "@/pages/Dashboard/addBlog.admin";
 import dashboardAdmin from "@/pages/Dashboard/dashboard.admin";
@@ -7,6 +6,8 @@ import AddServicesAdmin from "@/pages/Dashboard/AddServices.admin";
 import ContactUs from "@/pages/home/contactUs";
 import { lazy } from "react";
 import MemberAdmin from "@/pages/Dashboard/TeamMember.admin";
+import AddNewsAdmin from "@/pages/Dashboard/addNews.admin";
+import MainDetailsAdmin from "@/pages/Dashboard/mainDetails.admin";
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
 const Services = lazy(() => import("@/pages/home/services"));
 const AboutUs = lazy(() => import("@/pages/home/aboutUs"));
@@ -79,9 +80,9 @@ export const vendorRoutes = [
     hasAdminLayout:true,
   },
   {
-    id: "admin-about-us",
-    path: "/admin/update-about-us",
-    element: AboutUSAdmin,
+    id: "admin-mainDetails",
+    path: "/admin/main-details",
+    element: MainDetailsAdmin,
     hasAdminLayout:true,
   },
   {
@@ -94,6 +95,12 @@ export const vendorRoutes = [
     id: "admin-add-blog",
     path: "/admin/add-blog",
     element: AddBlogAdmin,
+    hasAdminLayout:true,
+  },
+  {
+    id: "admin-add-news",
+    path: "/admin/add-news",
+    element: AddNewsAdmin,
     hasAdminLayout:true,
   },
   {
