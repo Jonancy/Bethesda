@@ -2,8 +2,28 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import pic from "../../assets/Service.png";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getAllArticles } from "@/Services/newsArticles/newsArticles.service";
+import { NewsArticle } from "@/types";
 
 export default function NewsArticlesLists() {
+  const [newsLists, setNewsLists] = useState<NewsArticle[]>([]);
+
+  const getAllNews = async () => {
+    try {
+      const res = await getAllArticles();
+      console.log(res.data);
+      setNewsLists(res.data.getAllArticles);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  console.log(newsLists);
+
+  useEffect(() => {
+    getAllNews();
+  }, []);
+
   return (
     <>
       <div className=" px-10 lg:px-32 py-10 flex flex-col gap-10">
@@ -17,12 +37,15 @@ export default function NewsArticlesLists() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {[1, 2, 3, 4, 5].map((index) => (
-            <div className="flex flex-col gap-4 group" key={index}>
+          {newsLists?.map((news, index) => (
+            <div className="flex flex-col gap-4 group" key={news?.id}>
               <div className="relative rounded-3xl">
-                <img src={pic} className=" object-cover rounded-3xl"></img>
+                <img
+                  src={news?.picture}
+                  className=" object-cover rounded-3xl"
+                ></img>
                 <Link
-                  to=""
+                  to={`/news-articles/specific-news/${news?.id}`}
                   className="absolute bottom-0 flex item w-full bg-primaryColor text-center p-4 font-bold text-lg text-white rounded-b-3xl backdrop-blur-sm bg-opacity-50 group-hover:bg-opacity-100"
                 >
                   <div className="mx-auto flex">
@@ -33,13 +56,9 @@ export default function NewsArticlesLists() {
               </div>
               <div className="pr-6 flex flex-col gap-2">
                 <p className="text-xl font-bold text-primaryColor">
-                  1 DAYS REFRESHER TRAINING AT FULBARI, MYADI
+                  {news?.title}
                 </p>
-                <p className="text-sm line-clamp-2">
-                  1 days Refresher training was conducted on 27th June 2023 at
-                  fullbari, Myadi. We reflected on Depression and Suicide
-                  prevention . More then 45 participants participated in it.
-                </p>
+                <p className="text-sm line-clamp-2">{news?.content}</p>
               </div>
               {/* <div className="w-full  py-2  flex gap-2 items-center ">
                 <p className="font-bold text-sm text-primaryColor ">

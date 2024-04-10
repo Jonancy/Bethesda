@@ -2,8 +2,12 @@ import logo from "../../assets/mainLogo.png";
 import { IoMailOutline } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { FooterDetails } from "@/types";
 
-export default function Footer() {
+export default function Footer({footerDetails}:{footerDetails:FooterDetails}) {
+
+  console.log(footerDetails);
+  
   const services = [
     {
       service_name: "English Conversation Classes",
@@ -22,13 +26,6 @@ export default function Footer() {
           <div className="mb-6 flex h-[9rem] items-center space-x-2">
             <img className="h-full object-contain" src={logo} alt="" />
           </div>
-          {/* <div className="text-gray-500">
-            The Bethesda International Language and Leadership Development
-            Centre Pvt. Ltd. The Bethesda Centre is an initiative to a offer
-            language classes to the public in Pokhara Municipality and to b
-            equip train and lay leaders of civil society, in areas related to
-            Pastoral Care/Counseling, entrepreneurship and management.
-          </div> */}
         </div>
         <div className="mt-10">
           <div className="mt-4 mb-2 font-medium xl:mb-4 text-white text-3xl">
@@ -86,15 +83,15 @@ export default function Footer() {
             <div className="flex flex-col gap-2 mt-2">
               <div className="flex gap-2 items-center">
                 <FaLocationDot className="txt-xl" />
-                <p>Nivagalli, Chipledhunga Pokhara-9, Kaski</p>
+                <p>{footerDetails?.location}</p>
               </div>
               <div className="flex gap-2 items-center">
                 <FaPhoneAlt className="text-xl" />
-                <p>+977 061-581211</p>
+                <p>+977 {footerDetails?.phone_number}</p>
               </div>
               <div className="flex gap-2 items-center">
                 <IoMailOutline className="text-xl" />
-                <p>bethesda.language@gmail.com</p>
+                <p>{footerDetails?.email}</p>
               </div>
             </div>
           </div>
@@ -103,8 +100,7 @@ export default function Footer() {
       <div className="bg-secondaryColor">
         <div className="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:px-20 lg:flex-row lg:justify-between lg:text-left xl:px-10">
           <p className="">
-            Copyright 2024 ©️ Bethesda International Language & Leadership
-            Development Centre Pvt. Ltd.
+            Copyright 2024 ©️ {footerDetails?.copyRights}
           </p>
           <p className="">Powered by Websoft Technology Nepal</p>
         </div>

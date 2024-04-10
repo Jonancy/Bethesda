@@ -2,6 +2,7 @@ import ContactCard from "@/components/home/contactCard";
 import ContactUsForm from "@/components/home/contactUsForm";
 
 function ContactUs() {
+  //TODO: When i add the team members then i will add the contact us
   return (
     <div className="flex flex-col min-h-screen mx-20 mt-16">
       <div className="flex gap-x-16">

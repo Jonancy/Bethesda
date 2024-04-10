@@ -4,7 +4,13 @@ import WhatWeDo from "@/components/home/whatWeDo";
 import Team from "@/components/home/team";
 import GalleryHome from "@/components/home/galleryHome";
 import { useEffect, useState } from "react";
-import { HeroDetails, NewsArticle, TeamMembers, WhoWeareDetails } from "@/types";
+import {
+  HeroDetails,
+  NewsArticle,
+  Service,
+  TeamMembers,
+  WhoWeareDetails,
+} from "@/types";
 import { WhatWeDoDetails } from "@/types";
 import hehe from "../../assets/what.png";
 import { getPage1Details } from "@/Services/pages/page1.service";
@@ -17,11 +23,12 @@ export default function HomePage() {
   });
   const [whatWeDoDetails, setWhatWeDoDetails] = useState<WhatWeDoDetails>({
     whatWeDo: "",
-    whatWeDoImage: "",  
+    whatWeDoImage: "",
   });
   const [whoWeAreDetails, setWhoWeAreDetails] = useState<WhoWeareDetails>();
   const [teamMembers, setTeamMembers] = useState<TeamMembers[]>([]);
   const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
 
   const getPageDetails = async () => {
     try {
@@ -38,18 +45,17 @@ export default function HomePage() {
         whoWeAreImage: hehe,
       });
       setTeamMembers(res.data?.page1Details?.teamMembers);
-      setNewsArticles(res.data?.page1Details?.newsArticles)
+      setNewsArticles(res.data?.page1Details?.newsArticles);
+      setServices(res.data?.page1Details?.services);
     } catch (e) {
       console.log(e);
     }
   };
 
-  
   useEffect(() => {
     getPageDetails();
   }, []);
 
-  
   return (
     <div className="mb-20">
       <Hero hero={heroDetails.hero} welcome={heroDetails.welcome} />
@@ -57,7 +63,7 @@ export default function HomePage() {
         whatWeDoImage={whatWeDoDetails.whatWeDoImage}
         whatWeDo={whatWeDoDetails.whatWeDo}
       />
-      <OfferedServices />
+      <OfferedServices services={services} />
       <div
         className=" w-full h-[20rem]  bg-center bg-no-repeat bg-cover z-10 "
         style={{
@@ -77,7 +83,7 @@ export default function HomePage() {
       <Team teamMembers={teamMembers} />
       <GalleryHome />
       {/* <Mail /> */}
-      <NewsArticles newsArticleLists={newsArticles}/>
+      <NewsArticles newsArticleLists={newsArticles} />
     </div>
   );
 }
