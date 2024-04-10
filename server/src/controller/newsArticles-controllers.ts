@@ -4,7 +4,7 @@ import { prisma } from "../../server";
 
 export const getNewsArticles = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const getAllArticles = await prisma.newsAtricles.findMany();
+    const getAllArticles = await prisma.newsArticles.findMany();
 
     return res.status(200).json({ getAllArticles });
   } catch (e) {
@@ -17,7 +17,7 @@ export const getNewsArticles = async (req: Request, res: Response, next: NextFun
 export const addNewsArticle = async (req: Request, res: Response, next: NextFunction) => {
   const { title, content, picture } = req.body;
   try {
-    const newsArticle = await prisma.newsAtricles.create({
+    const newsArticle = await prisma.newsArticles.create({
       data: {
         title,
         content,
@@ -36,7 +36,7 @@ export const updateNewsArticleById = async (req: Request, res: Response, next: N
   const { title, content, picture } = req.body;
 
   try {
-    const updatedNewsArticle = await prisma.newsAtricles.update({
+    const updatedNewsArticle = await prisma.newsArticles.update({
       where: {
         id: id,
       },
@@ -62,7 +62,7 @@ export const deleteNewsArticle = async (
   const { id } = req.params;
 
   try {
-    await prisma.newsAtricles.delete({
+    await prisma.newsArticles.delete({
       where: {
         id: id,
       },

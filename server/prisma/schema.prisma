@@ -13,6 +13,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model CompanyDetails {
+  id           Int       @id @unique @default(1)
+  company_name String
+  phone_number Int
+  logo         String
+  email        String
+  about        String
+  copyRights   String
+  location     String
+  createdAt    DateTime? @default(now())
+  updatedAt    DateTime? @updatedAt
+}
+
 model User {
   id        String    @id @default(cuid())
   username  String    @unique
@@ -22,7 +35,7 @@ model User {
 }
 
 model Page1 {
-  id            Int       @id @unique @default(autoincrement())
+  id            Int       @id @unique @default(1)
   hero          String
   whatWeDoImage String
   welcome       String
@@ -83,7 +96,7 @@ model Team {
 //   designation Designation
 // }
 
-model NewsAtricles {
+model NewsArticles {
   id        String    @id @unique @default(cuid())
   title     String
   content   String
