@@ -1,5 +1,4 @@
 import express from "express"
-import { getTeamMembers } from "../controller/teamMembers-controllers";
 import { getPage1Details } from "../controller/page1-controllers";
 
 

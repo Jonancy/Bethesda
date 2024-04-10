@@ -19,7 +19,7 @@ export default function AboutUs() {
     getAboutUs();
   }, []);
   return (
-    <div className=" flex flex-col gap-10 px-20">
+    <div className=" flex flex-col gap-10 px-20 mb-20">
       <div className="flex gap-10 items-center py-10 px-20">
         <div className="">
           <h1>About us </h1>
@@ -32,8 +32,7 @@ export default function AboutUs() {
         </div>
         <img src={aboutUsDetails?.whatWeDoImage} className="w-[50rem] rounded-3xl"></img>
       </div>
-      <Team />
-      <NewsArticles />
+      <Team  teamMembers={aboutUsDetails?.teamMembers}/>
     </div>
   );
 }

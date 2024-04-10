@@ -5,6 +5,7 @@ import newsArticlesRoutes from './newsArtilces.route';
 import pageOneRoutes from './pageone.route';
 import blogsRoutes from './blog.route';
 import aboutUsRoutes from './aboutUs.routes';
+import mainDetailsRoutes from './mainDetails.routes';
 
 
 const rootRouter = Router();
@@ -16,6 +17,9 @@ rootRouter.use('/news-article',newsArticlesRoutes)
 rootRouter.use('/page-one',pageOneRoutes)
 rootRouter.use('/blogs',blogsRoutes)
 rootRouter.use('/about-us',aboutUsRoutes)
+//!For updating on the dashboard all small details like hero,images, contact numbers
+rootRouter.use('/mainDetails', mainDetailsRoutes )
+
 
 
 export default rootRouter;

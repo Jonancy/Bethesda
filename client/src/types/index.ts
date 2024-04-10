@@ -40,3 +40,18 @@ export interface NewsArticle {
   picture: string;
   createdAt: string;
 }
+
+export interface MainDetails {
+  company_name: string;
+  phone_number: number;
+  email: string;
+  logo: File | null; 
+  about: string;
+  copyRights: string;
+  location: string;
+  hero: File | null;
+  whatWeDoImage: File | null; 
+  welcome: string;
+  whatWeDo: string;
+  whoWeAre: string;
+}
