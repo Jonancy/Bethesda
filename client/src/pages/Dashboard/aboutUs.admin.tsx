@@ -18,10 +18,9 @@ import {
   updateMainDetails,
 } from "@/Services/index/page.main.service";
 import { MainDetails } from "@/types";
-import{toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const AboutUSAdmin = () => {
-
   const initialValues = {
     company_name: "",
     phone_number: 0,
@@ -104,7 +103,7 @@ const AboutUSAdmin = () => {
       toast.success(res.data.message);
       console.log(values, "jaja");
     } catch (error: any) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
       console.log(error);
     }
   };
@@ -394,6 +393,7 @@ const AboutUSAdmin = () => {
                 name="whoWeAre"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={values.whoWeAre}
               />
               {touched.whoWeAre && errors.whoWeAre && (
                 <div className="text-red-500">{errors.whoWeAre}</div>
@@ -410,6 +410,7 @@ const AboutUSAdmin = () => {
                 name="whatWeDo"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={values.whatWeDo}
               />
               {touched.whatWeDo && errors.whatWeDo && (
                 <div className="text-red-500">{errors.whatWeDo}</div>
