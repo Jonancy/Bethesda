@@ -17,18 +17,18 @@ export default function Footer() {
   ];
   return (
     <footer className="bg-primaryColor ">
-      <div className="flex  justify-between px-20 py-10">
+      <div className=" grid md:grid-cols-2 lg:grid-cols-4   justify-between px-20 py-10">
         <div className="max-w-sm">
           <div className="mb-6 flex h-[9rem] items-center space-x-2">
             <img className="h-full object-contain" src={logo} alt="" />
           </div>
-          <div className="text-gray-500">
+          {/* <div className="text-gray-500">
             The Bethesda International Language and Leadership Development
-            Centre Pvt. Ltd. (The Bethesda Centre) is an initiative to a) offer
-            language classes to the public in Pokhara Municipality and to b)
+            Centre Pvt. Ltd. The Bethesda Centre is an initiative to a offer
+            language classes to the public in Pokhara Municipality and to b
             equip train and lay leaders of civil society, in areas related to
-            Pastoral Care/Counseling, entrepreneurship and management. 
-          </div>
+            Pastoral Care/Counseling, entrepreneurship and management.
+          </div> */}
         </div>
         <div className="mt-10">
           <div className="mt-4 mb-2 font-medium xl:mb-4 text-white text-3xl">
@@ -85,11 +85,11 @@ export default function Footer() {
             <p className="text-3xl text-white">Get in Touch</p>
             <div className="flex flex-col gap-2 mt-2">
               <div className="flex gap-2 items-center">
-                <FaLocationDot className="txt-xl"/>
+                <FaLocationDot className="txt-xl" />
                 <p>Nivagalli, Chipledhunga Pokhara-9, Kaski</p>
               </div>
               <div className="flex gap-2 items-center">
-                <FaPhoneAlt className="text-xl"/>
+                <FaPhoneAlt className="text-xl" />
                 <p>+977 061-581211</p>
               </div>
               <div className="flex gap-2 items-center">
@@ -102,10 +102,11 @@ export default function Footer() {
       </div>
       <div className="bg-secondaryColor">
         <div className="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:px-20 lg:flex-row lg:justify-between lg:text-left xl:px-10">
-          <p className="">Copyright 2024 ©️ Bethesda International Language & Leadership Development Centre Pvt. Ltd.</p>
           <p className="">
-            Powered by Websoft Technology Nepal
+            Copyright 2024 ©️ Bethesda International Language & Leadership
+            Development Centre Pvt. Ltd.
           </p>
+          <p className="">Powered by Websoft Technology Nepal</p>
         </div>
       </div>
     </footer>
