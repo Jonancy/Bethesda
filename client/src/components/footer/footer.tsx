@@ -3,11 +3,15 @@ import { IoMailOutline } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FooterDetails } from "@/types";
+import { Link } from "react-router-dom";
 
-export default function Footer({footerDetails}:{footerDetails:FooterDetails}) {
-
+export default function Footer({
+  footerDetails,
+}: {
+  footerDetails: FooterDetails;
+}) {
   console.log(footerDetails);
-  
+
   const services = [
     {
       service_name: "English Conversation Classes",
@@ -44,9 +48,12 @@ export default function Footer({footerDetails}:{footerDetails:FooterDetails}) {
                 </a>
               </li>
               <li>
-                <a className="hover:text-blue-600 hover:underline" href="#">
+                <Link
+                  to={`/gallery`}
+                  className="hover:text-blue-600 hover:underline"
+                >
                   Gallery
-                </a>
+                </Link>
               </li>
               <li>
                 <a className="hover:text-blue-600 hover:underline" href="#">
@@ -99,9 +106,7 @@ export default function Footer({footerDetails}:{footerDetails:FooterDetails}) {
       </div>
       <div className="bg-secondaryColor">
         <div className="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:px-20 lg:flex-row lg:justify-between lg:text-left xl:px-10">
-          <p className="">
-            Copyright 2024 ©️ {footerDetails?.copyRights}
-          </p>
+          <p className="">Copyright 2024 ©️ {footerDetails?.copyRights}</p>
           <p className="">Powered by Websoft Technology Nepal</p>
         </div>
       </div>

@@ -31,11 +31,15 @@ export const getPage1Details = async (req: Request, res: Response) => {
       },
     });
     const services = await prisma.services.findMany({ take: 4 });
+
+    const gallery = await prisma.gallery.findMany({ take: 12 });
+
     const page1Details = {
       basicDetails,
       teamMembers,
       newsArticles,
       services,
+      gallery,
     };
 
     res.status(200).json({ page1Details });

@@ -9,6 +9,8 @@ import MemberAdmin from "@/pages/Dashboard/TeamMember.admin";
 import AddNewsAdmin from "@/pages/Dashboard/addNews.admin";
 import MainDetailsAdmin from "@/pages/Dashboard/mainDetails.admin";
 import SpecificNews from "@/pages/home/specificNews";
+const MainGallery = lazy(() => import("@/pages/home/mainGallery"));
+const EditGallery = lazy(() => import("@/pages/Dashboard/updateGallery.admin"));
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
 const Services = lazy(() => import("@/pages/home/services"));
 const AboutUs = lazy(() => import("@/pages/home/aboutUs"));
@@ -48,6 +50,12 @@ export const vendorRoutes = [
     id: "articles",
     path: "/news-articles",
     element: NewsArticlesLists,
+    hasHomeLayout: true,
+  },
+  {
+    id: "articles",
+    path: "/gallery",
+    element: MainGallery,
     hasHomeLayout: true,
   },
   {
@@ -119,6 +127,12 @@ export const vendorRoutes = [
     id: "admin-add-member",
     path: "/admin/add-member",
     element: AddTeamMemberAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "admin-add-member",
+    path: "/admin/edit-gallery",
+    element: EditGallery,
     hasAdminLayout: true,
   },
 ];

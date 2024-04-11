@@ -27,6 +27,13 @@ export type TeamMembers = {
   };
 };
 
+export type Gallery = {
+  id: number;
+  image: string;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
 export type Blogs = {
   id: string;
   title: string;

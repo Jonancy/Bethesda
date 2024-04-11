@@ -5,6 +5,7 @@ import Team from "@/components/home/team";
 import GalleryHome from "@/components/home/galleryHome";
 import { useEffect, useState } from "react";
 import {
+  Gallery,
   HeroDetails,
   NewsArticle,
   Service,
@@ -29,6 +30,7 @@ export default function HomePage() {
   const [teamMembers, setTeamMembers] = useState<TeamMembers[]>([]);
   const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
   const [services, setServices] = useState<Service[]>([]);
+  const [gallery, setGallery] = useState<Gallery[]>([]);
 
   const getPageDetails = async () => {
     try {
@@ -47,6 +49,7 @@ export default function HomePage() {
       setTeamMembers(res.data?.page1Details?.teamMembers);
       setNewsArticles(res.data?.page1Details?.newsArticles);
       setServices(res.data?.page1Details?.services);
+      setGallery(res.data?.page1Details?.gallery);
     } catch (e) {
       console.log(e);
     }
@@ -81,7 +84,7 @@ export default function HomePage() {
         </div>
       </div>
       <Team teamMembers={teamMembers} />
-      <GalleryHome />
+      <GalleryHome gallery={gallery} />
       {/* <Mail /> */}
       <NewsArticles newsArticleLists={newsArticles} />
     </div>

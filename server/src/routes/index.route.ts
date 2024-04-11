@@ -7,6 +7,7 @@ import blogsRoutes from "./blog.route";
 import aboutUsRoutes from "./aboutUs.routes";
 import mainDetailsRoutes from "./mainDetails.routes";
 import serviceRoutes from "./services.routes";
+import galleryRoutes from "./gallery.routes";
 
 const rootRouter = Router();
 
@@ -17,6 +18,7 @@ rootRouter.use("/page-one", pageOneRoutes);
 rootRouter.use("/blogs", blogsRoutes);
 rootRouter.use("/about-us", aboutUsRoutes);
 rootRouter.use("/service", serviceRoutes);
+rootRouter.use("/gallery", galleryRoutes);
 
 //!For updating on the dashboard all small details like hero,images, contact numbers
 rootRouter.use("/mainDetails", mainDetailsRoutes);
