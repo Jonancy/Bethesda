@@ -1,4 +1,3 @@
-import AboutUSAdmin from "@/pages/Dashboard/aboutUs.admin";
 import AddTeamMemberAdmin from "@/pages/Dashboard/addTeamMember.admin";
 import AddBlogAdmin from "@/pages/Dashboard/addBlog.admin";
 import dashboardAdmin from "@/pages/Dashboard/dashboard.admin";
@@ -7,19 +6,23 @@ import AddServicesAdmin from "@/pages/Dashboard/AddServices.admin";
 import ContactUs from "@/pages/home/contactUs";
 import { lazy } from "react";
 import MemberAdmin from "@/pages/Dashboard/TeamMember.admin";
+import AddNewsAdmin from "@/pages/Dashboard/addNews.admin";
+import MainDetailsAdmin from "@/pages/Dashboard/mainDetails.admin";
+import SpecificNews from "@/pages/home/specificNews";
+const MainGallery = lazy(() => import("@/pages/home/mainGallery"));
+const EditGallery = lazy(() => import("@/pages/Dashboard/updateGallery.admin"));
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
 const Services = lazy(() => import("@/pages/home/services"));
 const AboutUs = lazy(() => import("@/pages/home/aboutUs"));
 const HomePage = lazy(() => import("@/pages/home/homePage"));
 const NewsArticlesLists = lazy(() => import("@/pages/home/newsArticles"));
-const SpeciicServices = lazy(()=> import("@/pages/home/speciicServices")) ;
-const  SpecificBlogs =lazy(()=> import("@/pages/home/specificBlogs")) ;
-
+const SpecificServices = lazy(() => import("@/pages/home/specificServices"));
+const SpecificBlogs = lazy(() => import("@/pages/home/specificBlogs"));
 
 export const vendorRoutes = [
   //!Need to put the id of the vendors on to the url
 
-  { 
+  {
     id: "home",
     path: "/",
     element: HomePage,
@@ -44,9 +47,15 @@ export const vendorRoutes = [
     hasHomeLayout: true,
   },
   {
-    id: "blogs",
-    path: "/newsArticles",
+    id: "articles",
+    path: "/news-articles",
     element: NewsArticlesLists,
+    hasHomeLayout: true,
+  },
+  {
+    id: "articles",
+    path: "/gallery",
+    element: MainGallery,
     hasHomeLayout: true,
   },
   {
@@ -56,15 +65,21 @@ export const vendorRoutes = [
     hasHomeLayout: true,
   },
   {
-    id: "blogs",
-    path: "/services/specific-service",
-    element: SpeciicServices,
+    id: "service",
+    path: "/services/specific-service/:service_id",
+    element: SpecificServices,
     hasHomeLayout: true,
   },
   {
     id: "blogs",
-    path: "/services/specific-blogs",
+    path: "/blogs/specific-blogs/:blog_id",
     element: SpecificBlogs,
+    hasHomeLayout: true,
+  },
+  {
+    id: "news",
+    path: "/news-articles/specific-news/:news_id",
+    element: SpecificNews,
     hasHomeLayout: true,
   },
   {
@@ -76,37 +91,48 @@ export const vendorRoutes = [
     id: "dashboard",
     path: "/admin/dashboard",
     element: dashboardAdmin,
-    hasAdminLayout:true,
+    hasAdminLayout: true,
   },
   {
-    id: "admin-about-us",
-    path: "/admin/update-about-us",
-    element: AboutUSAdmin,
-    hasAdminLayout:true,
+    id: "admin-mainDetails",
+    path: "/admin/main-details",
+    element: MainDetailsAdmin,
+    hasAdminLayout: true,
   },
   {
     id: "admin-services",
     path: "/admin/add-services",
     element: AddServicesAdmin,
-    hasAdminLayout:true,
+    hasAdminLayout: true,
   },
   {
     id: "admin-add-blog",
     path: "/admin/add-blog",
     element: AddBlogAdmin,
-    hasAdminLayout:true,
+    hasAdminLayout: true,
+  },
+  {
+    id: "admin-add-news",
+    path: "/admin/add-news",
+    element: AddNewsAdmin,
+    hasAdminLayout: true,
   },
   {
     id: "admin-member",
     path: "/admin/member",
     element: MemberAdmin,
-    hasAdminLayout:true,
+    hasAdminLayout: true,
   },
   {
     id: "admin-add-member",
     path: "/admin/add-member",
     element: AddTeamMemberAdmin,
-    hasAdminLayout:true,
+    hasAdminLayout: true,
   },
-
-]
+  {
+    id: "admin-add-member",
+    path: "/admin/edit-gallery",
+    element: EditGallery,
+    hasAdminLayout: true,
+  },
+];

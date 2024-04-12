@@ -2,19 +2,20 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
-import mainLogo from "../../assets/mainLogo.png";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { NavbarDetails } from "@/types";
 
-export default function Navbar() {
+export default function Navbar({
+  navbarDetails,
+}: {
+  navbarDetails: NavbarDetails;
+}) {
   const location = useLocation();
   const path = location.pathname;
+  console.log(navbarDetails);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
 
   const isActive = (nav: string) => {
     return path === nav ? "text-tertiary" : "text-white";
@@ -24,7 +25,8 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50">
       <div className="flex justify-between  text-gray-400 bg-secondaryColor px-5 sm:px-10 md:px-20 py-3 items-center">
         <p className="text-xs font-bold tracking-wider">
-          CONTACT US: +977 061 581211 | bethesda.language@gmail.com
+          CONTACT US: +977 {navbarDetails?.phone_number} |{" "}
+          {navbarDetails?.email}
         </p>
         <div className="flex gap-2 items-center">
           <div className=" text-xl">
@@ -48,7 +50,11 @@ export default function Navbar() {
       >
         <div className="flex w-full items-center justify-between lg:w-auto">
           <Link to={"/"} className="flex items-center">
-            <img className="w-36 h-14" src={mainLogo} alt="Main Logo" />
+            <img
+              className="w-36 h-14"
+              src={navbarDetails?.logo}
+              alt="Main Logo"
+            />
           </Link>
           <button
             className="block focus:outline-none lg:hidden"
@@ -100,7 +106,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/newsArticles" className={isActive("/newsArticles")}>
+              <Link to="/news-articles" className={isActive("/news-articles")}>
                 NEWS & ARTICLES
               </Link>
             </li>

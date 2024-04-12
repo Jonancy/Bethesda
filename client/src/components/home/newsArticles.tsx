@@ -1,5 +1,6 @@
 import { NewsArticle } from "@/types";
 import imag from "../../assets/hero.png";
+import { Link } from "react-router-dom";
 
 export default function NewsArticles({
   newsArticleLists,
@@ -10,8 +11,12 @@ export default function NewsArticles({
     <div className="px-32 mt-10">
       <p className="text-center font-semibold text-2xl">News & Articles</p>
       <div className="grid grid-cols-3 gap-8 mt-6">
-        {newsArticleLists?.map((news,index) => (
-          <div className="flex flex-col  gap-4" key={index}>
+        {newsArticleLists?.map((news, index) => (
+          <Link
+            to={`/news-articles/specific-news/${news.id}`}
+            className="flex flex-col  gap-4"
+            key={index}
+          >
             <img
               src={news?.picture}
               className="rounded-lg h-[20rem] object-cover"
@@ -23,7 +28,7 @@ export default function NewsArticles({
             <div>
               <p className="font-semibold">Read More</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
