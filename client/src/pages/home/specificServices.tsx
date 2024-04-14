@@ -1,4 +1,4 @@
-import { getSpecificService } from "@/Services/services/services.service";
+import { getSpecificService } from "@/Services/services/endpoint.services.service";
 import img from "../../assets/Service.png";
 import MainHeader from "@/components/header/mainHeader";
 import SubHeader from "@/components/header/subHeader";

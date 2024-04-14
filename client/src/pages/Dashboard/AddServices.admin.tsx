@@ -1,4 +1,4 @@
-import { addService } from "@/Services/services/services.service";
+import { addService } from "@/Services/services/endpoint.services.service";
 import { Button } from "@/components/ui/button";
 import {
   Card,

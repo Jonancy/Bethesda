@@ -18,3 +18,4 @@ export const updateBlogs = (form: FormData, blog_id: number) => {
 export const deleteBlogs = (blog_id: number) => {
   return url.delete(`/blogs/delete/${blog_id}`);
 };
+ 
