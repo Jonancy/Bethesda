@@ -1,12 +1,7 @@
 import Router from "./routes/main.Routes";
 
 function App() {
-
-
-
-  return (
-    <Router />
-  );
+  return <Router />;
 }
 
 export default App;

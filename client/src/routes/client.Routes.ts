@@ -9,6 +9,8 @@ import MemberAdmin from "@/pages/Dashboard/TeamMember.admin";
 import AddNewsAdmin from "@/pages/Dashboard/addNews.admin";
 import MainDetailsAdmin from "@/pages/Dashboard/mainDetails.admin";
 import SpecificNews from "@/pages/home/specificNews";
+import BlogAdmin from "@/pages/Dashboard/blogs.admin";
+import NewsAdmin from "@/pages/Dashboard/NewsArticle";
 const MainGallery = lazy(() => import("@/pages/home/mainGallery"));
 const EditGallery = lazy(() => import("@/pages/Dashboard/updateGallery.admin"));
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
@@ -53,7 +55,7 @@ export const vendorRoutes = [
     hasHomeLayout: true,
   },
   {
-    id: "articles",
+    id: "gallery",
     path: "/gallery",
     element: MainGallery,
     hasHomeLayout: true,
@@ -105,10 +107,17 @@ export const vendorRoutes = [
     element: AddServicesAdmin,
     hasAdminLayout: true,
   },
+
   {
     id: "admin-add-blog",
     path: "/admin/add-blog",
     element: AddBlogAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "admin-blog",
+    path: "/admin/blogs",
+    element: BlogAdmin,
     hasAdminLayout: true,
   },
   {
@@ -117,6 +126,19 @@ export const vendorRoutes = [
     element: AddNewsAdmin,
     hasAdminLayout: true,
   },
+  {
+    id: "admin-add-news-article",
+    path: "/admin/add-news-article",
+    element: AddNewsAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "admin-news-article",
+    path: "/admin/news-article",
+    element: NewsAdmin,
+    hasAdminLayout: true,
+  },
+
   {
     id: "admin-member",
     path: "/admin/member",

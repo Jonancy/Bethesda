@@ -11,6 +11,7 @@ export const getAllBlogs = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
 export const getSpecificBlogs = async (req: Request, res: Response) => {
   try {
     const blog_id = req.params.blog_id;

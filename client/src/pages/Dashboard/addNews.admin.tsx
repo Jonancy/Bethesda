@@ -1,4 +1,4 @@
-import { addBlogs } from "@/Services/blogs/blogs.service";
+import { addBlogs } from "@/Services/blogs/endpoints.blogs.service";
 import { addNews } from "@/Services/newsArticles/newsArticles.service";
 import { Button } from "@/components/ui/button";
 import {
@@ -63,13 +63,12 @@ function AddNewsAdmin() {
     try {
       const res = await addNews(values);
       console.log(res.data);
-      toast.success(res.data.message)
+      toast.success(res.data.message);
     } catch (e: any) {
       console.log(e);
     }
   };
 
-  
   return (
     <Card>
       <CardHeader>
@@ -84,17 +83,19 @@ function AddNewsAdmin() {
             Image
           </Label>
           <Input
-              accept="image"
-              className="mt-1"
-              id="picture"
-              type="file"
-              name="picture"
-              onChange={(event) => setFieldValue("picture", event.target.files[0])}
-              onBlur={handleBlur}
-            />
-            {touched.picture && errors.picture ? (
-              <p className="text-sm text-red-500">{errors.picture}</p>
-            ) : null}
+            accept="image"
+            className="mt-1"
+            id="picture"
+            type="file"
+            name="picture"
+            onChange={(event) =>
+              setFieldValue("picture", event.target.files[0])
+            }
+            onBlur={handleBlur}
+          />
+          {touched.picture && errors.picture ? (
+            <p className="text-sm text-red-500">{errors.picture}</p>
+          ) : null}
         </div>
         <div className="grid gap-2">
           <Label className="text-sm" htmlFor="title">
@@ -125,7 +126,7 @@ function AddNewsAdmin() {
             onBlur={handleBlur}
             value={values.content}
           />
-           {touched.content && errors.content && (
+          {touched.content && errors.content && (
             <div className="text-red-500 text-sm">{errors.content}</div>
           )}
         </div>
@@ -134,7 +135,9 @@ function AddNewsAdmin() {
         <Button className="ml-auto" variant="outline">
           Cancel
         </Button>
-        <Button type="button" onClick={()=>handleSubmit()}>Save Changes</Button>
+        <Button type="button" onClick={() => handleSubmit()}>
+          Save Changes
+        </Button>
       </CardFooter>
     </Card>
   );
