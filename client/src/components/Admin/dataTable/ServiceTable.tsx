@@ -24,13 +24,11 @@ import {
 // import AllGenreDetails from "@/Services/Genre/getAllGenreServices";
 // import { genreDetails } from "@/types";
 import { Link } from "react-router-dom";
-import GetAllMemberAdmin from "@/Services/teamMember/getAllTeamMember.services";
-import { Blog } from "@/types";
-import { getAllBlogs } from "@/Services/blogs/endpoints.blogs.service";
-import GetAllBlogsAdmin from "@/Services/blogs/getAllBlog.services";
+import { Service } from "@/types";
+import GetAllServicesAdmin from "@/Services/services/getAllBlog.services";
 
 // Modify the columns accordingly
-export const columns: ColumnDef<Blog>[] = [
+export const columns: ColumnDef<Service>[] = [
   {
     accessorKey: "title",
     header: "Title",
@@ -77,8 +75,8 @@ export const columns: ColumnDef<Blog>[] = [
   },
 ];
 
-export function BlogDetailsTable() {
-  const { data, loading, error } = GetAllBlogsAdmin();
+export function ServiceDetailsTable() {
+  const { data, loading, error } = GetAllServicesAdmin();
   console.log(data, "hsbdchjdbschjbds");
 
   const [sorting, setSorting] = React.useState<SortingState>([]);

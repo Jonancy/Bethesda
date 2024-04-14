@@ -11,6 +11,7 @@ import MainDetailsAdmin from "@/pages/Dashboard/mainDetails.admin";
 import SpecificNews from "@/pages/home/specificNews";
 import BlogAdmin from "@/pages/Dashboard/blogs.admin";
 import NewsAdmin from "@/pages/Dashboard/NewsArticle";
+import ServiceAdmin from "@/pages/Dashboard/Service.admin";
 const MainGallery = lazy(() => import("@/pages/home/mainGallery"));
 const EditGallery = lazy(() => import("@/pages/Dashboard/updateGallery.admin"));
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
@@ -103,11 +104,16 @@ export const vendorRoutes = [
   },
   {
     id: "admin-services",
+    path: "/admin/services",
+    element: ServiceAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "admin-add-service",
     path: "/admin/add-services",
     element: AddServicesAdmin,
     hasAdminLayout: true,
   },
-
   {
     id: "admin-add-blog",
     path: "/admin/add-blog",

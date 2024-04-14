@@ -1,4 +1,4 @@
-import { getAllServices } from "@/Services/services/services.service";
+import { getAllServices } from "@/Services/services/endpoint.services.service";
 import pic from "../../assets/Service.png";
 import { useEffect, useState } from "react";
 import { Service } from "@/types";

@@ -25,7 +25,7 @@ import {
 // import { genreDetails } from "@/types";
 import { Link } from "react-router-dom";
 import { NewsArticle } from "@/types";
-import GetAllBlogsAdmin from "@/Services/services/blog/getAllBlog.services";
+import GetAllBlogsAdmin from "@/Services/blogs/getAllBlog.services";
 import GetAllArticlesAdmin from "@/Services/newsArticles/getAllNewsArticle.service";
 
 // Modify the columns accordingly
