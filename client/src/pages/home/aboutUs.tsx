@@ -18,18 +18,18 @@ export default function AboutUs() {
     getAboutUs();
   }, []);
   return (
-    <div className=" flex flex-col gap-10 px-20 mb-20">
-      <div className="flex gap-10 items-center py-10 px-20">
-        <div className="">
-          <h1>About us </h1>
-          <p>{aboutUsDetails?.whoWeAre}</p>
-          <div className="p-4 rounded-full bg-primaryColor w-fit mt-4 text-white ">
+    <div className="flex flex-col gap-10 px-5 md:px-20 mb-20">
+      <div className="grid grid-cols-2   gap-10 items-center py-10 px-5 md:px-20">
+        <div className="flex-1">
+          <h1 className="text-2xl md:text-4xl font-semibold">About us</h1>
+          <p className="mt-4">{aboutUsDetails?.whoWeAre}</p>
+          <div className="p-4 rounded-full bg-primaryColor w-fit mt-4 text-white">
             <p>Contact Us</p>
           </div>
         </div>
         <img
           src={aboutUsDetails?.whatWeDoImage}
-          className="w-[50rem] rounded-3xl"
+          className="w-full rounded-3xl object-cover h-full"
         ></img>
       </div>
       <Team teamMembers={aboutUsDetails?.teamMembers} />

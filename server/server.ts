@@ -7,12 +7,13 @@ const app = express();
 
 export const prisma = new PrismaClient();
 
-app.use(
-  cors({
-    origin: "http://localhost:5001",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:5001",
+//     credentials: true,
+//   })
+// );
+app.use(cors());
 
 //!This middleware is used to handle the incoming request from the front so that it will allow the images to display at the front
 //!Note should need multer@types and multer installed in ts

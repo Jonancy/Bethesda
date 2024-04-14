@@ -36,42 +36,82 @@ export default function NewsArticlesLists() {
             well as leadership training for rural civil society leaders.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsLists?.map((news, index) => (
-            <div className="flex flex-col gap-4 group" key={news?.id}>
-              <div className="relative rounded-3xl">
-                <img
-                  src={news?.picture}
-                  className=" object-cover rounded-3xl"
-                ></img>
-                <Link
-                  to={`/news-articles/specific-news/${news?.id}`}
-                  className="absolute bottom-0 flex item w-full bg-primaryColor text-center p-4 font-bold text-lg text-white rounded-b-3xl backdrop-blur-sm bg-opacity-50 group-hover:bg-opacity-100"
-                >
-                  <div className="mx-auto flex">
-                    <p>Read More</p>
-                    <FaArrowRightLong className=" mx-2 h-8 w-0 transition-all group-hover:w-6 group-hover:text-white" />
+            <Link
+              to={`/news-articles/specific-news/${news?.id}`}
+              className="group relative rounded-3xl  space-y-6 overflow-hidden"
+            >
+              <img
+                className="mx-auto h-[26rem] w-full grayscal object-cover object-top ransition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                src={news.picture}
+                alt="woman"
+                loading="lazy"
+                width="640"
+                height="805"
+              />
+              <div className="absolute bottom-0 inset-x-0 h-44 mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
+                <div>
+                  <div>
+                    <h4 className="text-xl font-semibold dark:text-gray-700 text-white">
+                      {news.title}
+                    </h4>
                   </div>
-                </Link>
-              </div>
-              <div className="pr-6 flex flex-col gap-2">
-                <p className="text-xl font-bold text-primaryColor">
-                  {news?.title}
+                </div>
+                <p className="mt-8 text-gray-300 dark:text-gray-600 line-clamp-4">
+                  {news.content}
                 </p>
-                <p className="text-sm line-clamp-2">{news?.content}</p>
               </div>
-              {/* <div className="w-full  py-2  flex gap-2 items-center ">
-                <p className="font-bold text-sm text-primaryColor ">
-                  Read More
-                </p>
-                <BiSolidRightArrow />
-              </div> */}
-            </div>
+            </Link>
+
+            // <div className="flex flex-col gap-4 group" key={news?.id}>
+            //   <div className="absolute bottom-0 inset-x-0 h-max mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
+            //     <div>
+            //       <h4 className="text-xl font-semibold dark:text-gray-700 text-white">
+            //         Hentoni Doe
+            //       </h4>
+            //       <span className="block text-sm text-gray-500">
+            //         CEO-Founder
+            //       </span>
+            //     </div>
+            //     <p className="mt-8 text-gray-300 dark:text-gray-600">
+            //       Quae labore quia tempora dolor impedit. Possimus, sint ducimus
+            //       ipsam?
+            //     </p>
+            //   </div>
+            //   <div className="relative rounded-3xl h-80">
+            //     <img
+            //       src={news?.picture}
+            //       className=" object-cover rounded-3xl w-full h-full"
+            //     ></img>
+            //     <Link
+            //       to={`/news-articles/specific-news/${news?.id}`}
+            //       className="absolute bottom-0 flex item w-full bg-primaryColor text-center p-4 font-bold text-lg text-white rounded-b-3xl backdrop-blur-sm bg-opacity-50 group-hover:bg-opacity-100"
+            //     >
+            //       <div className="mx-auto flex">
+            //         <p>Read More</p>
+            //         <FaArrowRightLong className=" mx-2 h-8 w-0 transition-all group-hover:w-6 group-hover:text-white" />
+            //       </div>
+            //     </Link>
+            //   </div>
+            //   <div className="pr-6 flex flex-col gap-2 px-10">
+            //     <p className="text-xl font-bold text-primaryColor">
+            //       {news?.title}
+            //     </p>
+            //     <p className="text-sm line-clamp-2">{news?.content}</p>
+            //   </div>
+            //   {/* <div className="w-full  py-2  flex gap-2 items-center ">
+            //     <p className="font-bold text-sm text-primaryColor ">
+            //       Read More
+            //     </p>
+            //     <BiSolidRightArrow />
+            //   </div> */}
+            // </div>
           ))}
         </div>
       </div>
 
-      <div className="py-20">
+      {/* <div className="py-20">
         <div className="xl:container mx-auto px-6 md:px-12">
           <div className="mb-16 md:w-2/3 lg:w-1/2">
             <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
@@ -182,7 +222,7 @@ export default function NewsArticlesLists() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
