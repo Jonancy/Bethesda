@@ -16,8 +16,8 @@ mainDetailsRoutes.patch(
   "/updateMainDetails",
   upload.fields([
     { name: "logo", maxCount: 1 },
-    { name: "hero", maxCount: 1 }, 
-    { name: "whatWeDoImage", maxCount: 1 }, 
+    { name: "hero", maxCount: 1 },
+    { name: "whatWeDoImage", maxCount: 1 },
   ]),
   updateMainDetails
 );

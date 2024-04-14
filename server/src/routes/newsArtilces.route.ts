@@ -19,9 +19,8 @@ newsArticlesRoutes.post("/add", upload.single("picture"), addNewsArticle);
 newsArticlesRoutes.patch(
   "/edit/:id",
   upload.single("picture"),
-  authMiddleware,
   updateNewsArticleById
 );
-newsArticlesRoutes.delete("/delete/:id", authMiddleware, updateNewsArticleById);
+newsArticlesRoutes.delete("/delete/:id", updateNewsArticleById);
 
 export default newsArticlesRoutes;

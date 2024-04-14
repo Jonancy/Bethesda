@@ -6,18 +6,6 @@ export const getPage1Details = async (req: Request, res: Response) => {
     const basicDetails = await prisma.page1.findFirst();
     const teamMembers = await prisma.team.findMany({
       take: 3,
-      include: {
-        designation: {
-          select: {
-            type: true,
-          },
-        },
-        post: {
-          select: {
-            type: true,
-          },
-        },
-      },
     });
 
     const newsArticles = await prisma.newsArticles.findMany({

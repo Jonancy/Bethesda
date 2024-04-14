@@ -52,32 +52,30 @@ model Gallery {
   updatedAt DateTime? @updatedAt
 }
 
-model Designation {
-  id        Int       @id @unique @default(autoincrement())
-  type      String    @unique
-  teams     Team[]
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @updatedAt
-}
+// model Designation {
+//   id        Int       @id @unique @default(autoincrement())
+//   type      String    @unique
+//   teams     Team[]
+//   createdAt DateTime? @default(now())
+//   updatedAt DateTime? @updatedAt
+// }
 
-model Post {
-  id        Int       @id @unique @default(autoincrement())
-  type      String    @unique
-  teams     Team[]
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @updatedAt
-}
+// model Post {
+//   id        Int       @id @unique @default(autoincrement())
+//   type      String    @unique
+//   teams     Team[]
+//   createdAt DateTime? @default(now())
+//   updatedAt DateTime? @updatedAt
+// }
 
 model Team {
-  id            String      @id @unique @default(cuid())
-  name          String
-  profile       String
-  designation   Designation @relation(fields: [designationId], references: [id])
-  designationId Int
-  post          Post        @relation(fields: [postId], references: [id])
-  postId        Int
-  createdAt     DateTime?   @default(now())
-  updatedAt     DateTime?   @updatedAt
+  id          String    @id @unique @default(cuid())
+  name        String
+  profile     String
+  designation String
+  post        String
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @updatedAt
 }
 
 // enum Designation {

@@ -46,21 +46,14 @@ export const columns: ColumnDef<TeamMembers>[] = [
     ),
   },
   {
-    accessorKey: "designation.type",
+    accessorKey: "designation",
     header: "Designation",
   },
   {
-    accessorKey: "post.type",
+    accessorKey: "post",
     header: "Post",
   },
-  {
-    accessorKey: "createdAt",
-    header: "Created At",
-  },
-  {
-    accessorKey: "updatedAt",
-    header: "Updated At",
-  },
+
   {
     id: "actions",
     enableHiding: false,
@@ -68,7 +61,7 @@ export const columns: ColumnDef<TeamMembers>[] = [
       const member = row.original;
       return (
         <div>
-          <Link to={`/admin/team-member/${member.id}`}>
+          <Link to={`/admin/member/edit-member/${member.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
         </div>
@@ -79,6 +72,7 @@ export const columns: ColumnDef<TeamMembers>[] = [
 
 export function MemberDetailsTable() {
   const { data, loading, error } = GetAllMemberAdmin();
+  console.log(data);
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(

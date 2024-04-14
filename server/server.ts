@@ -9,7 +9,7 @@ export const prisma = new PrismaClient();
 
 app.use(
   cors({
-    origin: "http://localhost:5001",
+    origin: "http://localhost:5000",
     credentials: true,
   })
 );
