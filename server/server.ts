@@ -24,7 +24,6 @@ app.use("/uploads/services", express.static("uploads/services"));
 app.use("/uploads/team", express.static("uploads/team"));
 app.use("/uploads/news", express.static("uploads/news"));
 app.use("/uploads/gallery", express.static("uploads/gallery"));
-
 app.use(express.json());
 app.use("/api/v1", rootRouter);
 

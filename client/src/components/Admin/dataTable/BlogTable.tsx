@@ -58,17 +58,13 @@ export const columns: ColumnDef<Blog>[] = [
     header: "Created At",
   },
   {
-    accessorKey: "updatedAt",
-    header: "Updated At",
-  },
-  {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
       const blog = row.original;
       return (
         <div>
-          <Link to={`/admin/blog/${blog.id}`}>
+          <Link to={`/admin/blogs/editBlogs/${blog.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
         </div>

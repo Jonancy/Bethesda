@@ -12,6 +12,10 @@ import SpecificNews from "@/pages/home/specificNews";
 import BlogAdmin from "@/pages/Dashboard/blogs.admin";
 import NewsAdmin from "@/pages/Dashboard/NewsArticle";
 import ServiceAdmin from "@/pages/Dashboard/Service.admin";
+import EditBlogAdmin from "@/pages/Dashboard/editBlogs.admin";
+import EditServicesAdmin from "@/pages/Dashboard/editServices";
+import EditNewsAdmin from "@/pages/Dashboard/editNews";
+import EditMemberAdmin from "@/pages/Dashboard/editTeamMembers";
 const MainGallery = lazy(() => import("@/pages/home/mainGallery"));
 const EditGallery = lazy(() => import("@/pages/Dashboard/updateGallery.admin"));
 const BlogLists = lazy(() => import("@/pages/home/blogLists"));
@@ -161,6 +165,30 @@ export const vendorRoutes = [
     id: "admin-add-member",
     path: "/admin/edit-gallery",
     element: EditGallery,
+    hasAdminLayout: true,
+  },
+  {
+    id: "editBlogs",
+    path: "/admin/blogs/editBlogs/:blog_id",
+    element: EditBlogAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "editBlogs",
+    path: "/admin/service/editService/:service_id",
+    element: EditServicesAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "editNews",
+    path: "/admin/news-articles/edit-news-articles/:news_id",
+    element: EditNewsAdmin,
+    hasAdminLayout: true,
+  },
+  {
+    id: "editMember",
+    path: "/admin/member/edit-member/:id",
+    element: EditMemberAdmin,
     hasAdminLayout: true,
   },
 ];

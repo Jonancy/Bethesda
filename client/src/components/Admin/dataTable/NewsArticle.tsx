@@ -57,17 +57,13 @@ export const columns: ColumnDef<NewsArticle>[] = [
     header: "Created At",
   },
   {
-    accessorKey: "updatedAt",
-    header: "Updated At",
-  },
-  {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
       const article = row.original;
       return (
         <div>
-          <Link to={`/admin/blog/${article.id}`}>
+          <Link to={`/admin/news-articles/edit-news-articles/${article.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
         </div>
