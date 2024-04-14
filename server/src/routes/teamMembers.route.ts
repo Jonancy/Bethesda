@@ -20,7 +20,7 @@ teamMemberRoutes.post(
   authMiddleware,
   addTeamMember
 );
-teamMemberRoutes.patch("/edit/:id", authMiddleware, updateTeamMemberById);
+teamMemberRoutes.patch("/edit/:id", uploadMember.single("image") , authMiddleware, updateTeamMemberById);
 teamMemberRoutes.delete("/delete/:id", authMiddleware, deleteTeamMemberById);
 
 export default teamMemberRoutes;

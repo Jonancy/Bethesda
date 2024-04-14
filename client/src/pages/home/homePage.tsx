@@ -35,19 +35,26 @@ export default function HomePage() {
   const getPageDetails = async () => {
     try {
       const res = await getPage1Details();
-      console.log(res.data);
+      console.log(res, "gaurav");
       let pageDetails = res.data.page1Details.basicDetails;
-      setHeroDetails({ hero: pageDetails.hero, welcome: pageDetails.welcome });
+      setHeroDetails({
+        hero: pageDetails?.hero,
+        welcome: pageDetails?.welcome,
+      });
       setWhatWeDoDetails({
-        whatWeDo: pageDetails.whatWeDo,
-        whatWeDoImage: pageDetails.whatWeDoImage,
+        whatWeDo: pageDetails?.whatWeDo,
+        whatWeDoImage: pageDetails?.whatWeDoImage,
       });
       setWhoWeAreDetails({
-        whoWeAre: pageDetails.whoWeAre,
+        whoWeAre: pageDetails?.whoWeAre,
         whoWeAreImage: hehe,
       });
       setTeamMembers(res.data?.page1Details?.teamMembers);
       setNewsArticles(res.data?.page1Details?.newsArticles);
+      console.log(
+        res.data?.page1Details?.newsArticles,
+        "res.data?.page1Details?.newsArticles"
+      );
       setServices(res.data?.page1Details?.services);
       setGallery(res.data?.page1Details?.gallery);
     } catch (e) {

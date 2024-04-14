@@ -52,7 +52,7 @@ export type Service = {
   updatedAt: string | null;
 };
 
-export interface NewsArticle {
+export type NewsArticle = {
   id: string;
   title: string;
   content: string;
@@ -89,4 +89,13 @@ export interface FooterDetails {
   location: string;
   copyRights: string;
   about: string;
+}
+
+export type Blog ={
+  id: string;
+  title: string;
+  content: string;
+  picture: string;
+  createdAt: string;
+  updatedAt: string;
 }

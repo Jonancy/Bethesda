@@ -3,9 +3,9 @@ import pic from "../../assets/Service.png";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllBlogs } from "@/Services/blogs/blogs.service";
+import { getAllBlogs } from "@/Services/blogs/endpoints.blogs.service";
 import { Blogs } from "@/types";
-import moment from 'moment';
+import moment from "moment";
 import { formatDate } from "@/utils/formatDate";
 
 export default function BlogLists() {
@@ -37,10 +37,19 @@ export default function BlogLists() {
 
       <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8">
         {blogLists.map((blogs, index) => (
-          <Link to={`/blogs/specific-blogs/${blogs?.id}`} className="flex flex-col gap-4 group" key={index}>
-            <img src={blogs?.picture} className="rounded-lg h-[20rem] object-cover"></img>
+          <Link
+            to={`/blogs/specific-blogs/${blogs?.id}`}
+            className="flex flex-col gap-4 group"
+            key={index}
+          >
+            <img
+              src={blogs?.picture}
+              className="rounded-lg h-[20rem] object-cover"
+            ></img>
             <div className="pr-6 flex flex-col gap-2">
-              <p className="text-sm font-semibold">{formatDate( new Date(blogs?.createdAt))}</p>
+              <p className="text-sm font-semibold">
+                {formatDate(new Date(blogs?.createdAt))}
+              </p>
               <p className="text-xl font-semibold">{blogs?.title}</p>
               <p className="text-sm">{blogs?.content}</p>
             </div>

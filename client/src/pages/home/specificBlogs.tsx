@@ -1,4 +1,4 @@
-import { getSpecificBlogs } from "@/Services/blogs/blogs.service";
+import { getSpecificBlogs } from "@/Services/blogs/endpoints.blogs.service";
 import img from "../../assets/Service.png";
 import MainHeader from "@/components/header/mainHeader";
 import SubHeader from "@/components/header/subHeader";

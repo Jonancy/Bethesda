@@ -7,6 +7,7 @@ export default function NewsArticles({
 }: {
   newsArticleLists: NewsArticle[];
 }) {
+  console.log(newsArticleLists, "new article list");
   return (
     <div className="px-32 mt-10">
       <p className="text-center font-semibold text-2xl">News & Articles</p>

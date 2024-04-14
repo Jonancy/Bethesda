@@ -39,7 +39,7 @@ function SideBarAdmin() {
           </li>
           <li>
             <Link
-              to={`/${url}/add-blog`}
+              to={`/${url}/blogs`}
               className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
             >
               Blog
@@ -47,7 +47,7 @@ function SideBarAdmin() {
           </li>
           <li>
             <Link
-              to={`/${url}/add-news`}
+              to={`/${url}/news-article`}
               className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
             >
               News Articles
@@ -56,7 +56,7 @@ function SideBarAdmin() {
 
           <li>
             <Link
-              to={`/${url}/add-team-member`}
+              to={`/${url}/member`}
               className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
             >
               Team Members
