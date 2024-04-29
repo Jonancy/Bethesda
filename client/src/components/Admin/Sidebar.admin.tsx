@@ -1,7 +1,8 @@
 import { clearUserData, setUserData } from "@/utils/authStorage";
 import logo from "../../assets/mainLogo.png";
 import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function SideBarAdmin() {
   const handleLogout = () => {
@@ -9,21 +10,34 @@ function SideBarAdmin() {
     setUserData({ username: "", token: "" });
   };
   const url = "admin";
+
+  const location = useLocation();
+  const path = location.pathname;
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const isActive = (nav: string) => {
+    return path === nav ? "bg-gray-100" : "bg-transparent";
+  };
+
   return (
     <div className="flex h-screen flex-col justify-between border-e bg-white">
       <div className="px-4 py-6">
-        <Button
-          className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-sm text-gray-600 hover:bg-gray-400"
-          onClick={handleLogout}
-        >
-          Log out
-        </Button>
-
-        <ul className="mt-6 space-y-1">
+        <div className="border-b-2 pb-5 border-slate-300">
+          <Button
+            className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-sm text-gray-600 hover:bg-gray-400"
+            onClick={handleLogout}
+          >
+            Log out
+          </Button>
+        </div>
+        <ul className="mt-5 space-y-3">
           <li>
             <Link
               to={`/${url}/main-details`}
-              className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+              className={`block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium  text-gray-700  ${isActive(
+                `/${url}/main-details`
+              )}`}
             >
               Main Details
             </Link>
@@ -32,7 +46,9 @@ function SideBarAdmin() {
           <li>
             <Link
               to={`/${url}/services`}
-              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              className={`block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium  text-gray-700  ${isActive(
+                `/${url}/services`
+              )}`}
             >
               Services
             </Link>
@@ -40,7 +56,9 @@ function SideBarAdmin() {
           <li>
             <Link
               to={`/${url}/blogs`}
-              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              className={`block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium  text-gray-700  ${isActive(
+                `/${url}/blogs`
+              )}`}
             >
               Blog
             </Link>
@@ -48,7 +66,9 @@ function SideBarAdmin() {
           <li>
             <Link
               to={`/${url}/news-article`}
-              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              className={`block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium  text-gray-700  ${isActive(
+                `/${url}/news-article`
+              )}`}
             >
               News Articles
             </Link>
@@ -57,7 +77,9 @@ function SideBarAdmin() {
           <li>
             <Link
               to={`/${url}/member`}
-              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              className={`block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium  text-gray-700  ${isActive(
+                `/${url}/member`
+              )}`}
             >
               Team Members
             </Link>
@@ -65,7 +87,9 @@ function SideBarAdmin() {
           <li>
             <Link
               to={`/${url}/edit-gallery`}
-              className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              className={`block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium  text-gray-700  ${isActive(
+                `/${url}/edit-gallery`
+              )}`}
             >
               Gallery
             </Link>
@@ -74,7 +98,7 @@ function SideBarAdmin() {
       </div>
 
       <div className="sticky inset-x-0 bottom-0 border-t border-gray-100 ">
-        <a href="#" className="flex items-center bg-primaryColor p-4">
+        <Link to="/" className="flex items-center bg-primaryColor p-4">
           <img alt="" src={logo} className=" w-52 object-cover" />
 
           {/* <div>
@@ -84,7 +108,7 @@ function SideBarAdmin() {
                 <span> eric@frusciante.com </span>
               </p>
             </div> */}
-        </a>
+        </Link>
       </div>
     </div>
   );

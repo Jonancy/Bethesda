@@ -36,7 +36,7 @@ export default function HomePage() {
     try {
       const res = await getPage1Details();
       console.log(res, "gaurav");
-      let pageDetails = res.data.page1Details.basicDetails;
+      const pageDetails = res.data.page1Details.basicDetails;
       setHeroDetails({
         hero: pageDetails?.hero,
         welcome: pageDetails?.welcome,

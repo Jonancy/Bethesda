@@ -99,3 +99,9 @@ export type Blog ={
   createdAt: string;
   updatedAt: string;
 }
+
+export type AboutUsType = {
+  whoWeAre: string;
+  whatWeDoImage: string;
+  teamMembers:TeamMembers[];
+}

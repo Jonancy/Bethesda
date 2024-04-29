@@ -10,9 +10,12 @@ export const login = async (req: Request, res: Response) => {
       console.log(req.body,"this is the body")
       const { username, password } = req.body;
 
-  
-      const user = await prisma.user.findUnique({ where: username });
+      console.log(username, password, "this is the username and password")
+
+
+      const user = await prisma.user.findUnique({ where:{ username} });
       if (!user) {
+        console.log("erroororrroroor no userrrr")
         return res.status(400).json({ error: "User doesn't exist" });
       }
   
