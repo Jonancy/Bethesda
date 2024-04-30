@@ -1,11 +1,9 @@
 import { FaArrowRightLong } from "react-icons/fa6";
-import pic from "../../assets/Service.png";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllBlogs } from "@/Services/blogs/endpoints.blogs.service";
 import { Blogs } from "@/types";
-import moment from "moment";
 import { formatDate } from "@/utils/formatDate";
 
 export default function BlogLists() {
@@ -20,18 +18,19 @@ export default function BlogLists() {
       console.log(e);
     }
   };
-  console.log(blogLists);
 
+  console.log(blogLists);
   useEffect(() => {
     getAllBlog();
   }, []);
+
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-40 py-10 flex flex-col gap-10">
+    <div className="px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col gap-10">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl sm:text-3xl font-bold text-primaryColor">
           Our Blogs
         </h1>
-        <p className="text-sm sm:text-base font-semibold text-center">
+        <p className="text-sm font-semibold text-center sm:text-base">
           We offer language instruction in English, Nepali, and Japanese, as
           well as leadership training for rural civil society leaders.
         </p>
@@ -45,14 +44,15 @@ export default function BlogLists() {
           >
             <img
               src={blogs?.picture}
-              className="rounded-lg sm:h-48 md:h-64 lg:h-80 object-cover"
+              className="rounded-lg h-48 sm:h-64 md:h-72 lg:h-80 object-cover"
+              alt="Blog"
             ></img>
             <div className="pr-6 flex flex-col gap-2">
               <p className="text-sm sm:text-base font-semibold">
                 {formatDate(new Date(blogs?.createdAt))}
               </p>
               <p className="text-lg sm:text-xl font-semibold">{blogs?.title}</p>
-              <p className="text-sm line-clamp-2 sm:line-clamp-3">
+              <p className="text-sm sm:text-base line-clamp-3">
                 {blogs?.content}
               </p>
             </div>
@@ -66,7 +66,7 @@ export default function BlogLists() {
               >
                 Read More
               </Link>
-              <FaArrowRightLong className="mx-2 sm:mx-0 sm:ml-2 h-6 w-0 transition-all group-hover:w-6 group-hover:text-secondaryColor" />
+              <FaArrowRightLong className="mx-2 h-6 w-0 transition-all group-hover:w-6 group-hover:text-secondaryColor" />
             </Button>
           </Link>
         ))}

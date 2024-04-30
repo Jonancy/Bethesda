@@ -40,7 +40,7 @@ export const addBlog = async (req: Request, res: Response) => {
   const { title, content } = req.body;
   try {
     let pictureFile = req.file;
-    console.log(req.file);
+    console.log(req.body);
     const baseURL = "http://localhost:3001/";
 
     const picture = pictureFile ? baseURL + pictureFile.path : null;

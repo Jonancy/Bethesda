@@ -1,12 +1,14 @@
-import { clearUserData, setUserData } from "@/utils/authStorage";
+import { clearUserData } from "@/utils/authStorage";
 import logo from "../../assets/mainLogo.png";
 import { Button } from "../ui/button";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function SideBarAdmin() {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     clearUserData();
-    setUserData({ username: "", token: "" });
+    navigate("/");
   };
   const url = "admin";
 
