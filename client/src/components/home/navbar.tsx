@@ -24,7 +24,7 @@ export default function Navbar({
   return (
     <nav className="sticky top-0 z-50">
       <div className="flex justify-between  text-gray-400 bg-secondaryColor px-5 sm:px-10 md:px-20 py-3 items-center">
-        <p className="text-xs font-bold tracking-wider">
+        <p className="text-xs font-bold tracking-wider hidden sm:block">
           CONTACT US: +977 {navbarDetails?.phone_number} |{" "}
           {navbarDetails?.email}
         </p>

@@ -22,7 +22,7 @@ export default function OfferedServices({ services }: { services: Service[] }) {
               className="rounded-3xl h-[30rem] object-cover w-full"
               src={service?.picture}
             ></img>
-            <div className=" w-full rounded-3xlp-3 md:p-6 lg:p-8 absolute -bottom-44 flex flex-col gap-10">
+            <div className=" w-full rounded-3xl p-3 md:p-6 lg:p-8 absolute -bottom-20 md:-bottom-32 flex flex-col gap-10">
               <div className=" bg-white p-8 rounded-3xl flex flex-col gap-10">
                 <div>
                   <h1 className="text-3xl font-semibold pb-4">

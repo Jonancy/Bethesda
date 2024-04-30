@@ -28,35 +28,40 @@ export default function SpecificServices() {
   useEffect(() => {
     getService();
   }, [service_id]);
+
   return (
-    <div className="flex flex-col  mt-10">
+    <div className="flex flex-col mt-10">
       <div className="">
-        <div className="px-[15rem]">
-          <div className="flex flex-col justify-center items-center gap-2 ">
+        <div className="px-4 sm:px-8 md:px-16 lg:px-32">
+          <div className="flex flex-col justify-center items-center gap-2">
             <MainHeader text="English Conversation Classes" />
           </div>
-          <div className="flex gap-10 my-20">
+          <div className="flex flex-col md:flex-row gap-10 my-20">
             <img
-              className="w-[26rem] rounded-3xl h-[20rem] object-cover"
+              className="w-full md:w-1/3 rounded-3xl h-auto md:h-80 object-cover"
               src={serviceDetails?.picture}
+              alt="Service"
             ></img>
-            <p>{serviceDetails?.content}</p>
+            <p className="md:w-2/3">{serviceDetails?.content}</p>
           </div>
         </div>
-        <div className="bg-gray-100  px-[15rem] py-20 ">
+        <div className="bg-gray-100 px-4 sm:px-8 md:px-16 lg:px-32 py-20">
           <SubHeader text="Other services That We Offer " />
-          <div className="grid grid-cols-4 gap-8 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
             {recommendationServices?.map((service) => (
-              <Link to={`/services/specific-service/${service.id}`}>
+              <Link
+                key={service.id}
+                to={`/services/specific-service/${service.id}`}
+                className="flex flex-col"
+              >
                 <img
-                  className="h-[10rem] rounded-3xl object-cover"
+                  className="h-48 rounded-3xl object-cover"
                   src={service?.picture}
+                  alt="Service"
                 ></img>
-                <div className="flex  items-center justify-between pt-2">
-                  <p className="text-xl font-bold w-[10rem]">
-                    {service?.title}
-                  </p>
-                  <IoIosArrowDropright className="text-5xl" />
+                <div className="flex items-center justify-between pt-2">
+                  <p className="text-lg font-bold truncate">{service?.title}</p>
+                  <IoIosArrowDropright className="text-3xl sm:text-4xl md:text-5xl" />
                 </div>
               </Link>
             ))}

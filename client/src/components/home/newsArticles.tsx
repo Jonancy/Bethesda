@@ -8,26 +8,38 @@ export default function NewsArticles({
   newsArticleLists: NewsArticle[];
 }) {
   console.log(newsArticleLists, "new article list");
+
   return (
-    <div className="px-32 mt-10">
-      <p className="text-center font-semibold text-2xl">News & Articles</p>
-      <div className="grid grid-cols-3 gap-8 mt-6">
+    <div className="px-4 mt-10 sm:px-8 md:px-16 lg:px-32">
+      <p className="text-center font-semibold text-xl sm:text-2xl">
+        News & Articles
+      </p>
+      <div className="grid gap-6 mt-6 sm:grid-cols-2 md:grid-cols-3">
         {newsArticleLists?.map((news, index) => (
           <Link
-            to={`/news-articles/specific-news/${news.id}`}
-            className="flex flex-col  gap-4"
+            to={`/news-articles/specific-news/${news?.id}`}
+            className="group relative rounded-3xl overflow-hidden"
             key={index}
           >
             <img
-              src={news?.picture}
-              className="rounded-lg h-[20rem] object-cover"
-            ></img>
-            <div className="pr-6 flex flex-col gap-2">
-              <p className="text-xl font-semibold">{news?.title} </p>
-              <p className="text-sm">{news?.content}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Read More</p>
+              className="mx-auto h-52 sm:h-64 md:h-80 w-full object-cover object-top  transition duration-500 group-hover:scale-105 "
+              src={news.picture}
+              alt="woman"
+              loading="lazy"
+              width="640"
+              height="805"
+            />
+            <div className="absolute bottom-0 inset-x-0 px-4 py-3 sm:px-6 sm:py-4 bg-gray-800 dark:bg-white translate-y-16 sm:translate-y-20 md:translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
+              <div>
+                <div>
+                  <h4 className="text-lg sm:text-xl font-semibold dark:text-gray-700 text-white">
+                    {news.title}
+                  </h4>
+                </div>
+              </div>
+              <p className="mt-4 text-sm sm:text-base text-gray-300 dark:text-gray-600 line-clamp-4">
+                {news.content}
+              </p>
             </div>
           </Link>
         ))}

@@ -85,7 +85,7 @@ export default function HomePage() {
           <div>
             <p className="text-4xl font-semibold">Know Who We Are</p>
           </div>
-          <div className="w-[90%]">
+          <div className="w-[80%] text-xs sm:text-sm lg:text-lg sm:w-[90%]">
             <p>{whoWeAreDetails?.whoWeAre}</p>
           </div>
         </div>

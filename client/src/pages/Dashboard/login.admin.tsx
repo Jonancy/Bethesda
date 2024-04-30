@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,6 +11,7 @@ import { Card } from "@/components/ui/card";
 
 function LoginForm() {
   const token = getUserData().token;
+  const navigate = useNavigate();
 
   const authentication = token ? true : false;
 
@@ -29,7 +30,8 @@ function LoginForm() {
             username: user.username,
             token: token,
           });
-          window.location.replace("/");
+          navigate("/admin/dashboard");
+          // window.location.replace("/");
         } catch (error) {
           console.error(error);
           // Handle login error

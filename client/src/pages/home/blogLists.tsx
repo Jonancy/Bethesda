@@ -20,22 +20,24 @@ export default function BlogLists() {
       console.log(e);
     }
   };
-  console.log(blogLists);
 
+  console.log(blogLists);
   useEffect(() => {
     getAllBlog();
   }, []);
+
   return (
-    <div className=" sm:px-10 md:px-20 lg:px-40 py-10 flex flex-col gap-10 ">
-      <div className="flex flex-col  items-center justify-center">
-        <h1 className="text-3xl font-bold text-primaryColor">Our Blogs</h1>
-        <p className="text-sm font-semibold">
+    <div className="px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col gap-10">
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-2xl sm:text-3xl font-bold text-primaryColor">
+          Our Blogs
+        </h1>
+        <p className="text-sm font-semibold text-center sm:text-base">
           We offer language instruction in English, Nepali, and Japanese, as
           well as leadership training for rural civil society leaders.
         </p>
       </div>
-
-      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {blogLists.map((blogs, index) => (
           <Link
             to={`/blogs/specific-blogs/${blogs?.id}`}
@@ -44,19 +46,21 @@ export default function BlogLists() {
           >
             <img
               src={blogs?.picture}
-              className="rounded-lg h-[20rem] object-cover"
+              className="rounded-lg h-48 sm:h-64 md:h-72 lg:h-80 object-cover"
+              alt="Blog"
             ></img>
             <div className="pr-6 flex flex-col gap-2">
               <p className="text-sm font-semibold">
                 {formatDate(new Date(blogs?.createdAt))}
               </p>
-              <p className="text-xl font-semibold">{blogs?.title}</p>
-              <p className="text-sm">{blogs?.content}</p>
+              <p className="text-lg sm:text-xl font-semibold">{blogs?.title}</p>
+              <p className="text-sm sm:text-base line-clamp-3">
+                {blogs?.content}
+              </p>
             </div>
-
             <Button
               variant="outline"
-              className="group w-full flex cursor-pointer items-center  justify-center rounded-md text-sm transition hover:border-2 hover:border-secondaryColor group-hover:bg-white  md:text-base  lg:p-3 lg:text-base"
+              className="group w-full flex cursor-pointer items-center justify-center rounded-md text-sm transition hover:border-2 hover:border-secondaryColor group-hover:bg-white md:text-base lg:p-3 lg:text-base"
             >
               <Link
                 to="#"
@@ -64,7 +68,7 @@ export default function BlogLists() {
               >
                 Read More
               </Link>
-              <FaArrowRightLong className=" mx-2 h-6 w-0 transition-all group-hover:w-6 group-hover:text-secondaryColor" />
+              <FaArrowRightLong className="mx-2 h-6 w-0 transition-all group-hover:w-6 group-hover:text-secondaryColor" />
             </Button>
           </Link>
         ))}
