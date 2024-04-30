@@ -2,12 +2,7 @@ import { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,6 +12,7 @@ import {
 } from "@/Services/index/page.main.service";
 import { MainDetails } from "@/types";
 import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
 
 const MainDetailsAdmin = () => {
   const initialValues = {
@@ -155,160 +151,175 @@ const MainDetailsAdmin = () => {
   console.log(values);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Update Main Details</CardTitle>
-        <p className="card-description">
-          Make changes to the "About Us" and "What We Do" sections.
-        </p>
-      </CardHeader>
+    <>
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label className="block" htmlFor="company_name">
-                Company Name
-              </Label>
-              <Input
-                id="company_name"
-                name="company_name"
-                placeholder="Enter company name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.company_name}
-              />
-              {touched.company_name && errors.company_name && (
-                <div className="text-red-500">{errors.company_name}</div>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label className="block" htmlFor="phone_number">
-                Phone Number
-              </Label>
-              <Input
-                id="phone_number"
-                name="phone_number"
-                type="number"
-                placeholder="Enter phone number"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.phone_number}
-              />
-              {touched.phone_number && errors.phone_number && (
-                <div className="text-red-500">{errors.phone_number}</div>
-              )}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label className="block" htmlFor="email">
-                Email
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-              {touched.email && errors.email && (
-                <div className="text-red-500">{errors.email}</div>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label className="block" htmlFor="logo">
-                Logo
-              </Label>
-              <Input
-                accept="image/*"
-                className="mt-1"
-                id="logo"
-                placeholder="Select logo"
-                type="file"
-                name="logo"
-                onChange={(event) =>
-                  setFieldValue("logo", event.currentTarget.files[0])
-                }
-              />
-              {touched.logo && errors.logo && (
-                <div className="text-red-500">{errors.logo}</div>
-              )}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label className="block" htmlFor="about">
-                About
-              </Label>
-              <Textarea
-                className="min-h-[150px]"
-                id="about"
-                placeholder="Enter about"
-                name="about"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.about}
-              />
-              {touched.about && errors.about && (
-                <div className="text-red-500">{errors.about}</div>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label className="block" htmlFor="copyRights">
-                Copy Rights
-              </Label>
-              <Textarea
-                className="min-h-[150px]"
-                id="copyRights"
-                placeholder="Enter copy rights"
-                name="copyRights"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.copyRights}
-              />
-              {touched.copyRights && errors.copyRights && (
-                <div className="text-red-500">{errors.copyRights}</div>
-              )}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label className="block" htmlFor="location">
-                Location
-              </Label>
-              <Input
-                id="location"
-                name="location"
-                placeholder="Enter location"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.location}
-              />
-              {touched.location && errors.location && (
-                <div className="text-red-500">{errors.location}</div>
-              )}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label className="block" htmlFor="welcome">
-                Hero Title
-              </Label>
-              <Input
-                id="welcome"
-                name="welcome"
-                placeholder="Enter title"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.welcome}
-              />
-              {touched.welcome && errors.welcome && (
-                <div className="text-red-500">{errors.welcome}</div>
-              )}
-            </div>
-            {/* <div className="space-y-2">
+        <Card className="p-5 flex flex-col space-y-5">
+          <CardHeader>
+            <CardTitle>Update Main Details</CardTitle>
+            <p className="card-description">
+              Make changes to the "About Us" and "What We Do" sections.
+            </p>
+          </CardHeader>
+          <Card>
+            <CardHeader>
+              <CardTitle>Company Details</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="company_name">
+                    Company Name
+                  </Label>
+                  <Input
+                    id="company_name"
+                    name="company_name"
+                    placeholder="Enter company name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.company_name}
+                  />
+                  {touched.company_name && errors.company_name && (
+                    <div className="text-red-500">{errors.company_name}</div>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="phone_number">
+                    Phone Number
+                  </Label>
+                  <Input
+                    id="phone_number"
+                    name="phone_number"
+                    type="number"
+                    placeholder="Enter phone number"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.phone_number}
+                  />
+                  {touched.phone_number && errors.phone_number && (
+                    <div className="text-red-500">{errors.phone_number}</div>
+                  )}
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="email">
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Enter email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                  />
+                  {touched.email && errors.email && (
+                    <div className="text-red-500">{errors.email}</div>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="logo">
+                    Logo
+                  </Label>
+                  <Input
+                    accept="image/*"
+                    className="mt-1"
+                    id="logo"
+                    placeholder="Select logo"
+                    type="file"
+                    name="logo"
+                    onChange={(event) =>
+                      setFieldValue("logo", event.currentTarget.files[0])
+                    }
+                  />
+                  {touched.logo && errors.logo && (
+                    <div className="text-red-500">{errors.logo}</div>
+                  )}
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="about">
+                    About
+                  </Label>
+                  <Textarea
+                    className="min-h-[150px]"
+                    id="about"
+                    placeholder="Enter about"
+                    name="about"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.about}
+                  />
+                  {touched.about && errors.about && (
+                    <div className="text-red-500">{errors.about}</div>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="copyRights">
+                    Copy Rights
+                  </Label>
+                  <Textarea
+                    className="min-h-[150px]"
+                    id="copyRights"
+                    placeholder="Enter copy rights"
+                    name="copyRights"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.copyRights}
+                  />
+                  {touched.copyRights && errors.copyRights && (
+                    <div className="text-red-500">{errors.copyRights}</div>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="location">
+                    Location
+                  </Label>
+                  <Input
+                    id="location"
+                    name="location"
+                    placeholder="Enter location"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.location}
+                  />
+                  {touched.location && errors.location && (
+                    <div className="text-red-500">{errors.location}</div>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Update Main Details</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label className="block" htmlFor="welcome">
+                  Hero Title
+                </Label>
+                <Input
+                  id="welcome"
+                  name="welcome"
+                  placeholder="Enter title"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.welcome}
+                />
+                {touched.welcome && errors.welcome && (
+                  <div className="text-red-500">{errors.welcome}</div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {/* <div className="space-y-2">
               <Label className="block" htmlFor="whatWeDo">
                 What We Do
               </Label>
@@ -324,114 +335,121 @@ const MainDetailsAdmin = () => {
                 <div className="text-red-500">{errors.whatWeDo}</div>
               )}
             </div> */}
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              {/* <div className="flex items-center gap-2">
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  {/* <div className="flex items-center gap-2">
                 <img
                   alt="Image"
                   className="border border-gray-200 w-80 h-80 rounded-md overflow-hidden object-cover object-center"
                   src="/placeholder.svg"
                 />
               </div> */}
-              <Label className="block" htmlFor="hero">
-                Hero Image
-              </Label>
-              <Input
-                accept="image/*"
-                className="mt-1"
-                id="hero"
-                placeholder="Select image"
-                type="file"
-                name="hero"
-                onChange={(event) =>
-                  setFieldValue("hero", event.currentTarget.files[0])
-                }
-              />
-              {touched.hero && errors.hero && (
-                <div className="text-red-500">{errors.hero}</div>
-              )}
-            </div>
-            <div className="space-y-2">
-              {/* <div className="flex items-center gap-2">
+                  <Label className="block" htmlFor="hero">
+                    Hero Image
+                  </Label>
+                  <Input
+                    accept="image/*"
+                    className="mt-1"
+                    id="hero"
+                    placeholder="Select image"
+                    type="file"
+                    name="hero"
+                    onChange={(event) =>
+                      setFieldValue("hero", event.currentTarget.files[0])
+                    }
+                  />
+                  {touched.hero && errors.hero && (
+                    <div className="text-red-500">{errors.hero}</div>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  {/* <div className="flex items-center gap-2">
                 <img
                   alt="Image"
                   className="border border-gray-200 w-80 h-80 rounded-md overflow-hidden object-cover object-center"
                   src="/placeholder.svg"
                 />
               </div> */}
-              <Label className="block" htmlFor="whatWeDoImage">
-                What We Do Image
-              </Label>
-              <Input
-                accept="image/*"
-                className="mt-1"
-                id="whatWeDoImage"
-                placeholder="Select image"
-                type="file"
-                name="whatWeDoImage"
-                onChange={(event) =>
-                  setFieldValue("whatWeDoImage", event.currentTarget.files[0])
-                }
-              />
-              {touched.whatWeDoImage && errors.whatWeDoImage && (
-                <div className="text-red-500">{errors.whatWeDoImage}</div>
-              )}
-            </div>
+                  <Label className="block" htmlFor="whatWeDoImage">
+                    What We Do Image
+                  </Label>
+                  <Input
+                    accept="image/*"
+                    className="mt-1"
+                    id="whatWeDoImage"
+                    placeholder="Select image"
+                    type="file"
+                    name="whatWeDoImage"
+                    onChange={(event) =>
+                      setFieldValue(
+                        "whatWeDoImage",
+                        event.currentTarget.files[0]
+                      )
+                    }
+                  />
+                  {touched.whatWeDoImage && errors.whatWeDoImage && (
+                    <div className="text-red-500">{errors.whatWeDoImage}</div>
+                  )}
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="whoWeAre">
+                    Who We Are Description
+                  </Label>
+                  <Textarea
+                    className="min-h-[150px]"
+                    id="whoWeAre"
+                    placeholder="Enter description"
+                    name="whoWeAre"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.whoWeAre}
+                  />
+                  {touched.whoWeAre && errors.whoWeAre && (
+                    <div className="text-red-500">{errors.whoWeAre}</div>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label className="block" htmlFor="whatDesc">
+                    What We Do Description
+                  </Label>
+                  <Textarea
+                    className="min-h-[150px]"
+                    id="whatWeDo"
+                    placeholder="Enter description"
+                    name="whatWeDo"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.whatWeDo}
+                  />
+                  {touched.whatWeDo && errors.whatWeDo && (
+                    <div className="text-red-500">{errors.whatWeDo}</div>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="flex gap-2 my-5">
+            <Button
+              className="ml-auto  p-2 rounded-md hover:bg-gray-200  duration-300"
+              type="button"
+              variant={"outline"}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="p-2 px-5 rounded-md hover:bg-gray-900 bg-black text-white duration-300"
+              type="submit"
+            >
+              Save
+            </Button>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label className="block" htmlFor="whoWeAre">
-                Who We Are Description
-              </Label>
-              <Textarea
-                className="min-h-[150px]"
-                id="whoWeAre"
-                placeholder="Enter description"
-                name="whoWeAre"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.whoWeAre}
-              />
-              {touched.whoWeAre && errors.whoWeAre && (
-                <div className="text-red-500">{errors.whoWeAre}</div>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label className="block" htmlFor="whatDesc">
-                What We Do Description
-              </Label>
-              <Textarea
-                className="min-h-[150px]"
-                id="whatWeDo"
-                placeholder="Enter description"
-                name="whatWeDo"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.whatWeDo}
-              />
-              {touched.whatWeDo && errors.whatWeDo && (
-                <div className="text-red-500">{errors.whatWeDo}</div>
-              )}
-            </div>
-          </div>
-        </CardContent>
-        <div className="flex gap-2">
-          <button
-            className="ml-auto  p-2 rounded-md hover:bg-gray-200  duration-300"
-            type="button"
-          >
-            Cancel
-          </button>
-          <button
-            className="p-2 rounded-md hover:bg-gray-900 bg-black text-white duration-300"
-            type="submit"
-          >
-            Save
-          </button>
-        </div>
+        </Card>
       </form>
-    </Card>
+    </>
   );
 };
 

@@ -50,6 +50,11 @@ export const columns: ColumnDef<Service>[] = [
   {
     accessorKey: "content",
     header: "Content",
+    cell: ({ row }) => (
+      <p className=" line-clamp-3 w-[200px] break-words  ">
+        {row.getValue("content")}
+      </p>
+    ),
   },
   {
     id: "actions",

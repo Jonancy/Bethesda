@@ -2,7 +2,6 @@ import { clearUserData, setUserData } from "@/utils/authStorage";
 import logo from "../../assets/mainLogo.png";
 import { Button } from "../ui/button";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 
 function SideBarAdmin() {
   const handleLogout = () => {
@@ -13,8 +12,6 @@ function SideBarAdmin() {
 
   const location = useLocation();
   const path = location.pathname;
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isActive = (nav: string) => {
     return path === nav ? "bg-gray-100" : "bg-transparent";

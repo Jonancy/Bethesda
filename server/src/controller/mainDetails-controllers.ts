@@ -22,6 +22,7 @@ export const getAllMainDetails = async (req: Request, res: Response) => {
         whoWeAre: getAboutUs?.whoWeAre || "",
       };
 
+      
     res.status(200).json(allDetails);
   } catch (error) {
     console.error("Error fetching all novels:", error);

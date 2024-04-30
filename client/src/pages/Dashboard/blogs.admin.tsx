@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 function BlogAdmin() {
   return (
     <div className="flex flex-col gap-y-5">
-      <h1 className="text-4xl underline underline-offset-8"></h1>
+      <h1 className="text-4xl underline underline-offset-8">Blogs</h1>
+
       <div className="flex">
         <Link to="/admin/add-blog">
           <Button>Add Blogs</Button>

@@ -24,9 +24,9 @@ import {
 // import AllGenreDetails from "@/Services/Genre/getAllGenreServices";
 // import { genreDetails } from "@/types";
 import { Link } from "react-router-dom";
-import GetAllMemberAdmin from "@/Services/teamMember/getAllTeamMember.services";
+
 import { Blog } from "@/types";
-import { getAllBlogs } from "@/Services/blogs/endpoints.blogs.service";
+
 import GetAllBlogsAdmin from "@/Services/blogs/getAllBlog.services";
 
 // Modify the columns accordingly
@@ -52,6 +52,11 @@ export const columns: ColumnDef<Blog>[] = [
   {
     accessorKey: "content",
     header: "Content",
+    cell: ({ row }) => (
+      <p className=" line-clamp-3 w-[200px] break-words  ">
+        {row.getValue("content")}
+      </p>
+    ),
   },
   {
     accessorKey: "createdAt",

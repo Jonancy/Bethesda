@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAboutUsServices } from "@/Services/aboutUs/aboutUs.service";
 import { AboutUsType } from "@/types";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function AboutUs() {
   const [aboutUsDetails, setAboutUsDetails] = useState<AboutUsType>();
@@ -20,7 +21,7 @@ export default function AboutUs() {
     getAboutUs();
   }, []);
   return (
-    <div className="flex flex-col gap-10 px-5 md:px-10 mb-20">
+    <div className="flex flex-col  px-5 md:px-10 mb-20">
       {/* <div className="grid grid-cols-2   gap-10 items-center py-10 px-5 md:px-20">
         <div className="flex-1">
           <h1 className="text-2xl md:text-4xl font-semibold">About us</h1>
@@ -46,15 +47,15 @@ export default function AboutUs() {
               </h1>
 
               <p className="mb-6 text-gray-500 sm:text-lg md:mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Possimus accusamus esse cum, praesentium laudantium enim
-                pariatur magnam accusantium illum animi? Quos quisquam at
-                laborum eius?
-                {aboutUsDetails?.whoWeAre}
+                {aboutUsDetails?.aboutUs}
               </p>
-              <Button className="p-5 py-6 hidden md:inline-flex  rounded-full bg-primaryColor w-fit mt-4 text-white">
-                <p>Contact Us</p>
-              </Button>
+              <div className="flex">
+                <Link to="/contact-us" className="w-fit h-fit rounded-xl">
+                  <Button className="p-5 py-6 hidden md:inline-flex  rounded-full bg-primaryColor w-fit mt-4 text-white">
+                    <p>Contact Us</p>
+                  </Button>
+                </Link>
+              </div>
             </div>
             <div>
               <div className="h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">

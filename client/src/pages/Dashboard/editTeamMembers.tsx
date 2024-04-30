@@ -19,7 +19,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useFormik } from "formik";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
@@ -114,83 +115,93 @@ function EditMemberAdmin() {
   console.log(values);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Edit News&Articles</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
+    <div className="h-screen px-4">
+      <div className="flex  items-center justify-between space-x-4 pb-8">
+        <Link className="text-lg font-semibold" to="/admin/member">
+          <Button className="text-base" variant={"outline"}>
+            {" "}
+            <FaArrowLeft className="mr-2 text-lg" /> back
+          </Button>
+        </Link>
+      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Edit News&Articles</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Name</Label>
+              <Input
+                id="name"
+                placeholder="Enter the name"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.name && errors.name}
+              />
+              {touched.name && errors.name && (
+                <div className="text-red-500 text-sm">{errors.name}</div>
+              )}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="designation">Designation</Label>
+              <Input
+                id="designation"
+                placeholder="Enter the designation"
+                value={values.designation}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.designation && errors.designation}
+              />
+              {touched.designation && errors.designation && (
+                <div className="text-red-500 text-sm">{errors.designation}</div>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="post">Post</Label>
+              <Input
+                id="post"
+                placeholder="Enter the post"
+                value={values.post}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.post && errors.post}
+              />
+              {touched.post && errors.post && (
+                <div className="text-red-500 text-sm">{errors.post}</div>
+              )}
+            </div>
+          </div>
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label>Profile Picture</Label>
             <Input
-              id="name"
-              placeholder="Enter the name"
-              value={values.name}
-              onChange={handleChange}
+              accept="image/*"
+              id="file-id"
+              type="file"
+              onChange={(e) => {
+                setFieldValue("picture", e.currentTarget.files?.[0]);
+              }}
               onBlur={handleBlur}
-              error={touched.name && errors.name}
+              error={touched.picture && errors.picture}
             />
-            {touched.name && errors.name && (
-              <div className="text-red-500 text-sm">{errors.name}</div>
+            {touched.picture && errors.picture && (
+              <div className="text-red-500 text-sm">{errors.picture}</div>
             )}
           </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="designation">Designation</Label>
-            <Input
-              id="designation"
-              placeholder="Enter the designation"
-              value={values.designation}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.designation && errors.designation}
-            />
-            {touched.designation && errors.designation && (
-              <div className="text-red-500 text-sm">{errors.designation}</div>
-            )}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="post">Post</Label>
-            <Input
-              id="post"
-              placeholder="Enter the post"
-              value={values.post}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.post && errors.post}
-            />
-            {touched.post && errors.post && (
-              <div className="text-red-500 text-sm">{errors.post}</div>
-            )}
-          </div>
-        </div>
-        <div className="space-y-2">
-          <Label>Profile Picture</Label>
-          <Input
-            accept="image/*"
-            id="file-id"
-            type="file"
-            onChange={(e) => {
-              setFieldValue("picture", e.currentTarget.files?.[0]);
-            }}
-            onBlur={handleBlur}
-            error={touched.picture && errors.picture}
-          />
-          {touched.picture && errors.picture && (
-            <div className="text-red-500 text-sm">{errors.picture}</div>
-          )}
-        </div>
-      </CardContent>
-      <CardFooter className="flex gap-2">
-        <Button className="ml-auto" variant="outline">
-          Cancel
-        </Button>
-        <Button type="button" onClick={() => handleSubmit()}>
-          Save Changes
-        </Button>
-      </CardFooter>
-    </Card>
+        </CardContent>
+        <CardFooter className="flex gap-2">
+          <Button className="ml-auto" variant="outline">
+            Cancel
+          </Button>
+          <Button type="button" onClick={() => handleSubmit()}>
+            Save Changes
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
   );
 }
 export default EditMemberAdmin;

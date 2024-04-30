@@ -1,9 +1,38 @@
 import { prisma } from "../../server";
 import { Request, Response } from "express";
 
+// export const getTeamMembers = async (req: Request, res: Response) => {
+//   try {
+//     const teamMembers = await prisma.team.findMany({
+     
+//     });
+
+//     res.status(200).json({ teamMembers });
+//   } catch (e) {
+//     res.status(500).json({ error: e.message });
+//   }
+// };
 export const getTeamMembers = async (req: Request, res: Response) => {
   try {
-    const teamMembers = await prisma.team.findMany();
+    const teamMembers = await prisma.team.findMany({
+      select:{
+        id:true,
+        name:true,
+        profile:true,
+        post:{
+          select:{
+            type:true
+          }
+        },
+        designation:{
+          select:{
+            
+            type:true
+          }
+        },
+        
+      }
+    });
 
     res.status(200).json({ teamMembers });
   } catch (e) {

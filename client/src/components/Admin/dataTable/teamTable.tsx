@@ -46,11 +46,11 @@ export const columns: ColumnDef<TeamMembers>[] = [
     ),
   },
   {
-    accessorKey: "designation",
+    accessorKey: "designation.type",
     header: "Designation",
   },
   {
-    accessorKey: "post",
+    accessorKey: "post.type",
     header: "Post",
   },
 

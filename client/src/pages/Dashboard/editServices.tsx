@@ -1,9 +1,4 @@
 import {
-  addBlogs,
-  getSpecificBlogs,
-  updateBlogs,
-} from "@/Services/blogs/endpoints.blogs.service";
-import {
   getSpecificService,
   updateService,
 } from "@/Services/services/endpoint.services.service";
@@ -11,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -21,7 +15,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useFormik } from "formik";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
@@ -109,73 +104,83 @@ function EditServicesAdmin() {
   console.log(values);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Edit Services</CardTitle>
-      </CardHeader>
-      <CardContent className="grid gap-6">
-        <div className="space-y-2">
-          <Label className="block" htmlFor="picture">
-            Image
-          </Label>
-          <Input
-            accept="image"
-            className="mt-1"
-            id="picture"
-            type="file"
-            name="picture"
-            onChange={(event) =>
-              setFieldValue("picture", event.target.files[0])
-            }
-            onBlur={handleBlur}
-          />
-          {touched.picture && errors.picture ? (
-            <p className="text-sm text-red-500">{errors.picture}</p>
-          ) : null}
-        </div>
-        <div className="grid gap-2">
-          <Label className="text-sm" htmlFor="title">
-            Title
-          </Label>
-          <Input
-            id="title"
-            name="title"
-            placeholder="Enter title"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.title}
-          />
-          {touched.title && errors.title && (
-            <div className="text-red-500 text-sm">{errors.title}</div>
-          )}
-        </div>
-        <div className="grid gap-2">
-          <Label className="text-sm" htmlFor="content">
-            Description
-          </Label>
-          <Textarea
-            className="min-h-[100px] resize-y"
-            id="content"
-            name="content"
-            placeholder="Enter description"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.content}
-          />
-          {touched.content && errors.content && (
-            <div className="text-red-500 text-sm">{errors.content}</div>
-          )}
-        </div>
-      </CardContent>
-      <CardFooter className="flex gap-2">
-        <Button className="ml-auto" variant="outline">
-          Cancel
-        </Button>
-        <Button type="button" onClick={() => handleSubmit()}>
-          Save Changes
-        </Button>
-      </CardFooter>
-    </Card>
+    <div className="h-screen px-4">
+      <div className="flex  items-center justify-between space-x-4 pb-8">
+        <Link className="text-lg font-semibold" to="/admin/services">
+          <Button className="text-base" variant={"outline"}>
+            {" "}
+            <FaArrowLeft className="mr-2 text-lg" /> back
+          </Button>
+        </Link>
+      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Edit Services</CardTitle>
+        </CardHeader>
+        <CardContent className="grid gap-6">
+          <div className="space-y-2">
+            <Label className="block" htmlFor="picture">
+              Image
+            </Label>
+            <Input
+              accept="image"
+              className="mt-1"
+              id="picture"
+              type="file"
+              name="picture"
+              onChange={(event) =>
+                setFieldValue("picture", event.target.files[0])
+              }
+              onBlur={handleBlur}
+            />
+            {touched.picture && errors.picture ? (
+              <p className="text-sm text-red-500">{errors.picture}</p>
+            ) : null}
+          </div>
+          <div className="grid gap-2">
+            <Label className="text-sm" htmlFor="title">
+              Title
+            </Label>
+            <Input
+              id="title"
+              name="title"
+              placeholder="Enter title"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.title}
+            />
+            {touched.title && errors.title && (
+              <div className="text-red-500 text-sm">{errors.title}</div>
+            )}
+          </div>
+          <div className="grid gap-2">
+            <Label className="text-sm" htmlFor="content">
+              Description
+            </Label>
+            <Textarea
+              className="min-h-[100px] resize-y"
+              id="content"
+              name="content"
+              placeholder="Enter description"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.content}
+            />
+            {touched.content && errors.content && (
+              <div className="text-red-500 text-sm">{errors.content}</div>
+            )}
+          </div>
+        </CardContent>
+        <CardFooter className="flex gap-2">
+          <Button className="ml-auto" variant="outline">
+            Cancel
+          </Button>
+          <Button type="button" onClick={() => handleSubmit()}>
+            Save Changes
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
   );
 }
 export default EditServicesAdmin;

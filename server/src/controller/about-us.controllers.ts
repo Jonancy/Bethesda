@@ -4,16 +4,20 @@ import { prisma } from "../../server";
 export const getAboutUsDetails = async (
   req: Request,
   res: Response,
-  next: NextFunction
 ) => {
   try {
     const getAboutUs = await prisma.page1.findFirst();
-
     const teamMembers = await prisma.team.findMany();
+    const aboutUs = await prisma.companyDetails.findFirst(
+      {select:{
+        about: true
+      }}
+    );
     let aboutUsDetails = {
       whoWeAre: getAboutUs.whoWeAre,
       whatWeDoImage: getAboutUs.whatWeDoImage,
       whatWeDo: getAboutUs.whatWeDo,
+      aboutUs: aboutUs.about,
       teamMembers,
     };
     return res.status(200).json({ aboutUsDetails });

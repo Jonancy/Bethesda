@@ -102,6 +102,7 @@ export type Blog ={
 
 export type AboutUsType = {
   whoWeAre: string;
+  aboutUs:string;
   whatWeDoImage: string;
   teamMembers:TeamMembers[];
 }
