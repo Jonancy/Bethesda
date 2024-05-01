@@ -218,6 +218,46 @@ const MainDetailsAdmin = () => {
                     <div className="text-red-500">{errors.email}</div>
                   )}
                 </div>
+                {/* <div className="relative flex h-[300px] w-[200px] items-center justify-center rounded-md bg-gray-200">
+                  {data?.coverImage && !values.coverImage ? (
+                    <>
+                      <img
+                        src={data?.coverImage} // Preview the selected cover image
+                        alt="Cover Image"
+                        className=" h-full w-full rounded-md object-cover "
+                      />
+                      <Button
+                        onClick={() => {
+                          data.coverImage = "";
+                        }}
+                        type="button"
+                        variant={"ghost"}
+                        className="absolute right-1 top-1 z-10 flex rounded-md p-0 hover:bg-transparent"
+                      >
+                        <FaX className="bg-white text-2xl text-cyan-700" />
+                      </Button>
+                    </>
+                  ) : values.coverImage ? (
+                    <>
+                      <img
+                        loading="lazy"
+                        src={URL.createObjectURL(values.coverImage)} // Preview the selected cover image
+                        alt="Cover Image"
+                        className=" h-full w-full object-cover "
+                      />
+                      <Button
+                        onClick={() => setFieldValue("coverImage", null)}
+                        type="button"
+                        variant={"ghost"}
+                        className="absolute right-2 top-0 z-10 m-0 flex rounded-md p-0 hover:bg-transparent"
+                      >
+                        <FaX className="bg-white text-2xl text-cyan-700" />
+                      </Button>
+                    </>
+                  ) : (
+                    "Image Preview"
+                  )}
+                </div> */}
                 <div className="space-y-2">
                   <Label className="block" htmlFor="logo">
                     Logo

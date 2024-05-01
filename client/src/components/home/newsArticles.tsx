@@ -37,7 +37,8 @@ export default function NewsArticles({
                   </h4>
                 </div>
               </div>
-              <p className="mt-4 text-sm sm:text-base text-gray-300 dark:text-gray-600 line-clamp-4">
+
+              <p className="mt-4 text-sm sm:text-base text-gray-300 dark:text-gray-600 line-clamp-1">
                 {news.content}
               </p>
             </div>
