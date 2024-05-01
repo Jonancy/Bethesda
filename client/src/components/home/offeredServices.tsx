@@ -17,23 +17,25 @@ export default function OfferedServices({ services }: { services: Service[] }) {
           <Link
             to={`/services/specific-service/${service.id}`}
             className="relative mb-56"
-            key={service?.id}
+            key={index}
           >
             <img
-              className="rounded-3xl h-[30rem] object-cover w-full"
+              className="rounded-3xl h-[25rem] object-cover w-full"
               src={service?.picture}
             ></img>
-            <div className=" w-full rounded-3xl p-3 md:p-6 lg:p-8 absolute -bottom-20 md:-bottom-32 flex flex-col gap-10">
-              <div className=" bg-white p-8 rounded-3xl flex flex-col gap-10">
+            <div className=" w-full rounded-3xl p-3 md:p-6 lg:p-8 absolute -bottom-20 md:-bottom-32 flex flex-col gap-5">
+              <div className=" bg-white p-8 rounded-3xl flex flex-col gap-5">
                 <div>
                   <h1 className="text-3xl font-semibold pb-4">
                     {service?.title}
                   </h1>
-                  <p className="line-clamp-6">{service?.content}</p>
+                  <p className="line-clamp-4">{service?.content}</p>
                 </div>
-                <div className="flex gap-2 items-center text-xl">
-                  <p>Read More</p>
-                  <BiRightArrow />
+                <div className="w-full flex justify-end">
+                  <div className="flex gap-2 items-center text-xl border-2 border-black w-fit p-3 rounded-2xl hover:bg-primaryColor hover:text-white">
+                    <p>Read More</p>
+                    <BiRightArrow />
+                  </div>
                 </div>
               </div>
             </div>

@@ -38,7 +38,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         phone_number: res.data.phone_number,
         copyRights: res.data.copyRights,
         location: res.data.location,
-        about:res.data.about
+        about: res.data.about,
       });
     } catch (e) {
       console.log(e);
@@ -51,7 +51,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Navbar navbarDetails={navbarDetails} />
       {children}
       <Footer footerDetails={footerDetails} />

@@ -3,6 +3,7 @@ import pic from "../../assets/Service.png";
 import { useEffect, useState } from "react";
 import { Service } from "@/types";
 import { Link } from "react-router-dom";
+import { IoArrowForwardCircleSharp } from "react-icons/io5";
 
 export default function Services() {
   const [serviceLists, setServiceLists] = useState<Service[]>([]);
@@ -41,6 +42,7 @@ export default function Services() {
               src={service?.picture}
               className="absolute inset-0 w-full h-full rounded-3xl object-cover brightness-75"
             />
+            <IoArrowForwardCircleSharp className="absolute right-10 top-1/2 bottom-1/2 text-6xl hidden group-hover:block duration-300 text-white" />
             <div className="absolute left-2 sm:left-5 md:left-10 lg:left-14 bottom-10 text-xl sm:text-2xl md:text-3xl lg:text-4xl group-hover:scale-125 origin-top-left text-white font-semibold duration-200 transition-all">
               <p className="w-[25rem]  duration-200">{service?.title}</p>
             </div>

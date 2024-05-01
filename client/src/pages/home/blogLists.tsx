@@ -35,7 +35,7 @@ export default function BlogLists() {
           well as leadership training for rural civil society leaders.
         </p>
       </div>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="grid gap-x-8 gap-y-10 mt-16 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4">
         {blogLists.map((blogs, index) => (
           <Link
             to={`/blogs/specific-blogs/${blogs?.id}`}
