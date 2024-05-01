@@ -2,14 +2,15 @@ import { BiRightArrow } from "react-icons/bi";
 import MainButton from "../buttons/mainButton";
 import { Service } from "@/types";
 import { Link, useNavigate } from "react-router-dom";
+import MainHeader from "../header/mainHeader";
 
 export default function OfferedServices({ services }: { services: Service[] }) {
   const navigate = useNavigate();
 
   return (
     <div className="bg-gray-100 p-5 md:px-32 pb-10">
-      <div className="flex items-center justify-center py-16">
-        <p className="text-4xl font-semibold">Services We Offer</p>
+      <div className="my-14">
+        <MainHeader text={"Services We Offer"} />
       </div>
       <div className="grid md:grid-cols-2 gap-10 grid-cols-1">
         {services?.map((service, index) => (
@@ -40,7 +41,7 @@ export default function OfferedServices({ services }: { services: Service[] }) {
         ))}
       </div>
       <div
-        className="w-full flex justify-center items-center mt-10"
+        className="w-full flex justify-center items-center mb-6"
         onClick={() => navigate("/services")}
       >
         <MainButton text={"View All Services"} />

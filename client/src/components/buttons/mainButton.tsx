@@ -1,9 +1,10 @@
-import { BiRightArrowAlt } from "react-icons/bi";
+import { FaAngleRight } from "react-icons/fa";
+
 export default function MainButton({ text }: { text: string }) {
   return (
-    <div className="flex gap-2 items-center text-xl font-semibold p-6 rounded-lg border-2 border-black cursor-pointer">
+    <div className="flex items-center gap-2 text-sm md:text-base lg:text-xl font-semibold p-4 md:p-6 rounded-lg border-2 border-black cursor-pointer hover:bg-secondaryColor hover:text-white transition-colors duration-300">
       <p>{text}</p>
-      <BiRightArrowAlt />
+      <FaAngleRight />
     </div>
   );
 }

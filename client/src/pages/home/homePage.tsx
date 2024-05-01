@@ -16,6 +16,7 @@ import { WhatWeDoDetails } from "@/types";
 import hehe from "../../assets/what.png";
 import { getPage1Details } from "@/Services/pages/page1.service";
 import NewsArticles from "@/components/home/newsArticles";
+import MainHeader from "@/components/header/mainHeader";
 
 export default function HomePage() {
   const [heroDetails, setHeroDetails] = useState<HeroDetails>({
@@ -82,9 +83,18 @@ export default function HomePage() {
         }}
       >
         <div className="text-center flex justify-center gap-10 items-center flex-col h-full text-white ">
-          <div>
-            <p className="text-4xl font-semibold">Know Who We Are</p>
+          {/* <div className="my-14">
+            <MainHeader text={"Know Who We Are"} />
+          </div> */}
+          <div className="flex flex-col gap-2 items-center justify-center">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+              Know Who We Are
+            </h1>
+            <hr className="w-12 sm:w-16 md:w-20 border-2 border-white"></hr>
           </div>
+          {/* <div>
+            <p className="text-4xl font-semibold">Know Who We Are</p>
+          </div> */}
           <div className="w-[80%] text-xs sm:text-sm lg:text-lg sm:w-[90%]">
             <p>{whoWeAreDetails?.whoWeAre}</p>
           </div>

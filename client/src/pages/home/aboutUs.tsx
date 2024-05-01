@@ -20,8 +20,9 @@ export default function AboutUs() {
   useEffect(() => {
     getAboutUs();
   }, []);
+
   return (
-    <div className="flex flex-col  px-5 md:px-10 mb-20">
+    <div className="flex flex-col  px-5 md:px-10 mb-20 ">
       {/* <div className="grid grid-cols-2   gap-10 items-center py-10 px-5 md:px-20">
         <div className="flex-1">
           <h1 className="text-2xl md:text-4xl font-semibold">About us</h1>
@@ -58,7 +59,7 @@ export default function AboutUs() {
               </div>
             </div>
             <div>
-              <div className="h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+              <div className=" h-[20rem] md:h-[30rem] overflow-hidden rounded-lg bg-gray-100 shadow-lg ">
                 <img
                   src={aboutUsDetails?.whatWeDoImage}
                   // src="https://images.unsplash.com/photo-1554743365-a80c1243316e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -68,18 +69,6 @@ export default function AboutUs() {
                 />
               </div>
             </div>
-            {/* <div className="md:col-span-2">
-              <h2 className="mb-2 text-center text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4 md:text-left">
-                About us
-              </h2>
-              <p className="mb-6 text-gray-500 sm:text-lg md:mb-8">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deserunt veritatis a suscipit similique cum obcaecati maxime,
-                fugit officia sunt. Laudantium est repellendus, necessitatibus
-                totam, deleniti distinctio aliquid assumenda dolore voluptas
-                molestiae perspiciatis temporibus ex ea.
-              </p>
-            </div> */}
           </div>
         </div>
       </div>
