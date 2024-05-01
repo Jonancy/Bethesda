@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import MainButton from "../buttons/mainButton";
 import { Gallery } from "@/types";
+import MainHeader from "../header/mainHeader";
 
 export default function GalleryHome({ gallery }: { gallery: Gallery[] }) {
   console.log(gallery);
 
   return (
     <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-40">
-      <h1 className="text-center font-semibold text-2xl sm:text-3xl">
-        Our Picture Gallery
-      </h1>
+      <div className="mt-16 mb-4">
+        <MainHeader text={" Our Picture Gallery"} />
+      </div>
+
       <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
         <div className="mx-auto grid grid-cols-2 gap-4 p-2 sm:p-4 md:grid-cols-3 lg:grid-cols-4">
           {gallery?.map((image, index) => (

@@ -21,11 +21,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import * as Dialog from "@radix-ui/react-dialog";
+
 // import AllGenreDetails from "@/Services/Genre/getAllGenreServices";
 // import { genreDetails } from "@/types";
 import { Link } from "react-router-dom";
 import GetAllMemberAdmin from "@/Services/teamMember/getAllTeamMember.services";
 import { TeamMembers } from "@/types";
+import { RxCrossCircled } from "react-icons/rx";
 
 // Modify the columns accordingly
 export const columns: ColumnDef<TeamMembers>[] = [
@@ -46,11 +49,11 @@ export const columns: ColumnDef<TeamMembers>[] = [
     ),
   },
   {
-    accessorKey: "designation.type",
+    accessorKey: "designation",
     header: "Designation",
   },
   {
-    accessorKey: "post.type",
+    accessorKey: "post",
     header: "Post",
   },
 
@@ -59,11 +62,50 @@ export const columns: ColumnDef<TeamMembers>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       const member = row.original;
+      const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
+      const openDialog = () => setIsDialogOpen(true);
+      const closeDialog = () => setIsDialogOpen(false);
+
       return (
-        <div>
+        <div className="flex gap-2">
           <Link to={`/admin/member/edit-member/${member.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
+          <Button variant={"outline"} onClick={openDialog}>
+            Delete
+          </Button>
+
+          <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <Dialog.Portal>
+              <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+              <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-8 shadow-lg">
+                <Dialog.Title className="text-xl font-medium">
+                  Are you sure?
+                </Dialog.Title>
+                <Dialog.Description className="mt-2 text-gray-500">
+                  This will permanently delete the member. This action cannot be
+                  undone.
+                </Dialog.Description>
+                <div className="mt-4 flex justify-end space-x-2">
+                  <Dialog.Close asChild>
+                    <Button variant="ghost" onClick={closeDialog}>
+                      Cancel
+                    </Button>
+                  </Dialog.Close>
+                  <Button variant="destructive">Delete</Button>
+                </div>
+                <Dialog.Close asChild>
+                  <button
+                    className="absolute top-4 right-4 inline-flex items-center justify-center rounded-full p-1 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                    aria-label="Close"
+                  >
+                    <RxCrossCircled />
+                  </button>
+                </Dialog.Close>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
         </div>
       );
     },

@@ -1,6 +1,7 @@
 import { NewsArticle } from "@/types";
 import imag from "../../assets/hero.png";
 import { Link } from "react-router-dom";
+import MainHeader from "../header/mainHeader";
 
 export default function NewsArticles({
   newsArticleLists,
@@ -11,9 +12,10 @@ export default function NewsArticles({
 
   return (
     <div className="px-4 mt-10 sm:px-8 md:px-16 lg:px-32">
-      <p className="text-center font-semibold text-xl sm:text-2xl">
-        News & Articles
-      </p>
+      <div className="mt-20 mb-14">
+        <MainHeader text={" News & Articles"} />
+      </div>
+
       <div className="grid gap-6 mt-6 sm:grid-cols-2 md:grid-cols-3">
         {newsArticleLists?.map((news, index) => (
           <Link

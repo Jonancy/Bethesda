@@ -6,6 +6,8 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Blogs } from "@/types";
 import { formatDate } from "@/utils/formatDate";
+import { Button } from "@/components/ui/button";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function SpecificBlogs() {
   const { blog_id } = useParams();
@@ -51,23 +53,40 @@ export default function SpecificBlogs() {
         <div className="bg-gray-100 px-4 py-8 sm:px-8 sm:py-10 md:px-16 md:py-12 lg:px-32 lg:py-16">
           <SubHeader text="More Blogs " />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-            {recommendationBlogs?.map((blog) => (
+            {recommendationBlogs?.map((blog, index) => (
               <Link
                 to={`/blogs/specific-blogs/${blog?.id}`}
-                key={blog?.id}
-                className="flex flex-col"
+                className="flex flex-col gap-4 group"
+                key={index}
               >
                 <img
-                  className="h-40 sm:h-48 md:h-56 lg:h-64 rounded-3xl object-cover"
                   src={blog?.picture}
+                  className="rounded-lg h-48 sm:h-64 md:h-72 lg:h-80 object-cover"
                   alt="Blog"
-                />
-                <div className="flex items-center justify-between pt-2">
-                  <p className="text-lg sm:text-xl font-bold truncate">
+                ></img>
+                <div className="pr-6 flex flex-col gap-2">
+                  <p className="text-sm sm:text-base font-semibold">
+                    {formatDate(new Date(blog?.createdAt))}
+                  </p>
+                  <p className="text-lg sm:text-xl font-semibold">
                     {blog?.title}
                   </p>
-                  <IoIosArrowDropright className="text-3xl sm:text-4xl md:text-5xl" />
+                  <p className="text-sm sm:text-base line-clamp-3">
+                    {blog?.content}
+                  </p>
                 </div>
+                <Button
+                  variant="outline"
+                  className="group w-full flex cursor-pointer items-center justify-center rounded-md text-sm transition hover:border-2 hover:border-secondaryColor group-hover:bg-white md:text-base lg:p-3 lg:text-base"
+                >
+                  <Link
+                    to="#"
+                    className="group flex w-full items-center justify-center rounded py-1 text-center text-sm font-bold group-hover:text-secondaryColor md:text-base"
+                  >
+                    Read More
+                  </Link>
+                  <FaArrowRightLong className="mx-2 h-6 w-0 transition-all group-hover:w-6 group-hover:text-secondaryColor" />
+                </Button>
               </Link>
             ))}
           </div>

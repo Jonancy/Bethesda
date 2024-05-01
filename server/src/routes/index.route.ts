@@ -22,6 +22,47 @@ rootRouter.use("/about-us", aboutUsRoutes);
 rootRouter.use("/service", serviceRoutes);
 rootRouter.use("/gallery", galleryRoutes);
 
+/**
+ * @swagger
+ * /api/v1/contact-us:
+ *   post:
+ *     summary: Send a contact us message
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ContactUsRequest'
+ *     responses:
+ *       201:
+ *         description: Mail sent successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ContactUsResponse'
+ *       500:
+ *         description: Internal server error
+ *
+ * @swagger
+ * components:
+ *   schemas:
+ *     ContactUsRequest:
+ *       type: object
+ *       properties:
+ *         firstName:
+ *           type: string
+ *         lastName:
+ *           type: string
+ *         email:
+ *           type: string
+ *         message:
+ *           type: string
+ *     ContactUsResponse:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ */
 rootRouter.post("/contact-us", async (req: Request, res: Response) => {
   const { firstName, lastName, email, message } = req.body;
   console.log(req.body);
