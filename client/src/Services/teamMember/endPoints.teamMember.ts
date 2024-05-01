@@ -18,5 +18,5 @@ export const updateMember = (form: FormData, id: string) => {
 };
 
 export const deleteMember = (id: string) => {
-  return url.delete(`/team-member/edit/${id}`);
+  return url.delete(`/team-member/delete/${id}`);
 };

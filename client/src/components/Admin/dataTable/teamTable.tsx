@@ -29,8 +29,23 @@ import { Link } from "react-router-dom";
 import GetAllMemberAdmin from "@/Services/teamMember/getAllTeamMember.services";
 import { TeamMembers } from "@/types";
 import { RxCrossCircled } from "react-icons/rx";
+import { deleteMember } from "@/Services/teamMember/endPoints.teamMember";
+import { toast } from "react-toastify";
 
 // Modify the columns accordingly
+
+const handleDelete = async (memberId: string) => {
+  try {
+    const res = await deleteMember(memberId);
+    console.log(memberId);
+    toast.success("The member has been deleted successfully.");
+    console.log(res.data);
+  } catch (error) {
+    console.error("Error deleting member:", error);
+    // Handle the error, e.g., show an error message
+  }
+};
+
 export const columns: ColumnDef<TeamMembers>[] = [
   {
     accessorKey: "name",
@@ -67,6 +82,12 @@ export const columns: ColumnDef<TeamMembers>[] = [
       const openDialog = () => setIsDialogOpen(true);
       const closeDialog = () => setIsDialogOpen(false);
 
+      const handleDeleteClick = () => {
+        console.log(member);
+
+        handleDelete(member.id);
+        closeDialog();
+      };
       return (
         <div className="flex gap-2">
           <Link to={`/admin/member/edit-member/${member.id}`}>
@@ -93,7 +114,9 @@ export const columns: ColumnDef<TeamMembers>[] = [
                       Cancel
                     </Button>
                   </Dialog.Close>
-                  <Button variant="destructive">Delete</Button>
+                  <Button variant="destructive" onClick={handleDeleteClick}>
+                    Delete
+                  </Button>
                 </div>
                 <Dialog.Close asChild>
                   <button

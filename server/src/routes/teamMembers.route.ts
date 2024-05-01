@@ -27,6 +27,6 @@ teamMemberRoutes.patch(
   uploadMember.single("image"),
   updateTeamMemberById
 );
-teamMemberRoutes.delete("/delete/:id", authMiddleware, deleteTeamMemberById);
+teamMemberRoutes.delete("/delete/:id", deleteTeamMemberById);
 
 export default teamMemberRoutes;

@@ -15,6 +15,6 @@ export const updateNews = (form: FormData, id: number) => {
   return url.patch(`/news-article/edit/${id}`, form);
 };
 
-export const deleteNews = (id: number) => {
+export const deleteNews = (id: string) => {
   return url.delete(`/news-article/delete/${id}`);
 };

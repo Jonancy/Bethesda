@@ -23,10 +23,26 @@ import {
 } from "@/components/ui/table";
 // import AllGenreDetails from "@/Services/Genre/getAllGenreServices";
 // import { genreDetails } from "@/types";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Link } from "react-router-dom";
 import { Service } from "@/types";
 import GetAllServicesAdmin from "@/Services/services/getAllBlog.services";
+import { toast } from "react-toastify";
+import { deleteService } from "@/Services/services/endpoint.services.service";
+import { RxCrossCircled } from "react-icons/rx";
 
+const handleDeleteService = async (serviceId: string) => {
+  try {
+    // Call the backend endpoint to delete the service
+    const res = await deleteService(serviceId);
+    console.log(serviceId);
+    toast.success("The service has been deleted successfully.");
+    console.log(res.data);
+  } catch (error) {
+    console.error("Error deleting service:", error);
+    // Handle the error, e.g., show an error message
+  }
+};
 // Modify the columns accordingly
 export const columns: ColumnDef<Service>[] = [
   {
@@ -60,12 +76,61 @@ export const columns: ColumnDef<Service>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const blog = row.original;
+      const service = row.original;
+      const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
+      const openDialog = () => setIsDialogOpen(true);
+      const closeDialog = () => setIsDialogOpen(false);
+
+      const handleDeleteClick = () => {
+        console.log(service);
+        handleDeleteService(service.id);
+        closeDialog();
+      };
+
       return (
-        <div>
-          <Link to={`/admin/service/editService/${blog.id}`}>
+        <div className="flex gap-2">
+          <Link to={`/admin/service/editService/${service.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
+          <Button variant={"outline"} onClick={openDialog}>
+            Delete
+          </Button>
+
+          <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-8 shadow-lg">
+                  <Dialog.Title className="text-xl font-medium">
+                    Are you sure?
+                  </Dialog.Title>
+                  <Dialog.Description className="mt-2 text-gray-500">
+                    This will permanently delete the service. This action cannot
+                    be undone.
+                  </Dialog.Description>
+                  <div className="mt-4 flex justify-end space-x-2">
+                    <Dialog.Close asChild>
+                      <Button variant="ghost" onClick={closeDialog}>
+                        Cancel
+                      </Button>
+                    </Dialog.Close>
+                    <Button variant="destructive" onClick={handleDeleteClick}>
+                      Delete
+                    </Button>
+                  </div>
+                  <Dialog.Close asChild>
+                    <button
+                      className="absolute top-4 right-4 inline-flex items-center justify-center rounded-full p-1 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                      aria-label="Close"
+                    >
+                      <RxCrossCircled />
+                    </button>
+                  </Dialog.Close>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>{" "}
+          </Dialog.Root>
         </div>
       );
     },

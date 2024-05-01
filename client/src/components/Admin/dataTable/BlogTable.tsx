@@ -23,12 +23,26 @@ import {
 } from "@/components/ui/table";
 // import AllGenreDetails from "@/Services/Genre/getAllGenreServices";
 // import { genreDetails } from "@/types";
+import * as Dialog from "@radix-ui/react-dialog";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-
 import { Blog } from "@/types";
-
 import GetAllBlogsAdmin from "@/Services/blogs/getAllBlog.services";
+import { RxCrossCircled } from "react-icons/rx";
+import { deleteBlogs } from "@/Services/blogs/endpoints.blogs.service";
 
+const handleDeleteBlog = async (blogId: string) => {
+  try {
+    // Call the backend endpoint to delete the blog
+    const res = await deleteBlogs(blogId);
+    console.log(blogId);
+    toast.success("The blog has been deleted successfully.");
+    console.log(res.data);
+  } catch (error) {
+    console.error("Error deleting blog:", error);
+    // Handle the error, e.g., show an error message
+  }
+};
 // Modify the columns accordingly
 export const columns: ColumnDef<Blog>[] = [
   {
@@ -67,11 +81,60 @@ export const columns: ColumnDef<Blog>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       const blog = row.original;
+      const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
+      const openDialog = () => setIsDialogOpen(true);
+      const closeDialog = () => setIsDialogOpen(false);
+
+      const handleDeleteClick = () => {
+        console.log(blog);
+        handleDeleteBlog(blog.id);
+        closeDialog();
+      };
+
       return (
-        <div>
+        <div className="flex gap-2">
           <Link to={`/admin/blogs/editBlogs/${blog.id}`}>
             <Button variant={"outline"}>Edit</Button>
           </Link>
+          <Button variant={"outline"} onClick={openDialog}>
+            Delete
+          </Button>
+
+          <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <Dialog.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 bg-black/30" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-8 shadow-lg">
+                  <Dialog.Title className="text-xl font-medium">
+                    Are you sure?
+                  </Dialog.Title>
+                  <Dialog.Description className="mt-2 text-gray-500">
+                    This will permanently delete the blog. This action cannot be
+                    undone.
+                  </Dialog.Description>
+                  <div className="mt-4 flex justify-end space-x-2">
+                    <Dialog.Close asChild>
+                      <Button variant="ghost" onClick={closeDialog}>
+                        Cancel
+                      </Button>
+                    </Dialog.Close>
+                    <Button variant="destructive" onClick={handleDeleteClick}>
+                      Delete
+                    </Button>
+                  </div>
+                  <Dialog.Close asChild>
+                    <button
+                      className="absolute top-4 right-4 inline-flex items-center justify-center rounded-full p-1 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                      aria-label="Close"
+                    >
+                      <RxCrossCircled />
+                    </button>
+                  </Dialog.Close>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
+          </Dialog.Root>
         </div>
       );
     },

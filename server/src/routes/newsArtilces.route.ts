@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addNewsArticle,
+  deleteNewsArticle,
   getNewsArticles,
   getSpecificNews,
   updateNewsArticleById,
@@ -21,6 +22,6 @@ newsArticlesRoutes.patch(
   upload.single("picture"),
   updateNewsArticleById
 );
-newsArticlesRoutes.delete("/delete/:id", updateNewsArticleById);
+newsArticlesRoutes.delete("/delete/:id", deleteNewsArticle);
 
 export default newsArticlesRoutes;

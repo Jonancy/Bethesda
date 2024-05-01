@@ -15,6 +15,6 @@ export const updateService = (form: FormData, blog_id: number) => {
   return url.patch(`/service/edit/${blog_id}`, form);
 };
 
-export const deleteService = (blog_id: number) => {
+export const deleteService = (blog_id: string) => {
   return url.delete(`/service/delete/${blog_id}`);
 };
