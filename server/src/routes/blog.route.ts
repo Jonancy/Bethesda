@@ -18,6 +18,6 @@ blogsRoutes.post("/add", upload.single("picture"), addBlog);
 blogsRoutes.get("/specificBlogs/:blog_id", getSpecificBlogs);
 
 blogsRoutes.patch("/edit/:id", upload.single("picture"), updateBlogById);
-blogsRoutes.delete("/delete/:id", authMiddleware, deleteBlogById);
+blogsRoutes.delete("/delete/:id", deleteBlogById);
 
 export default blogsRoutes;

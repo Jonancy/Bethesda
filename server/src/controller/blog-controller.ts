@@ -89,7 +89,6 @@ export const updateBlogById = async (
   }
 };
 
-// Controller function to delete a series by ID
 export const deleteBlogById = async (
   req: Request,
   res: Response

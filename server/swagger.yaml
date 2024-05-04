@@ -1,0 +1,670 @@
+openapi: 3.0.0
+info:
+  title: Your API
+  version: 1.0.0
+  description: Your API description
+  # Other info fields...
+
+components:
+  schemas:
+    Blogs:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        picture:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    # Add other schemas here if needed...
+
+paths:
+  #Blogs section
+  /api/v1/blogs/all:
+    get:
+      summary: Get all blogs
+      description: Retrieve all blogs from the database.
+      responses:
+        "200":
+          description: A list of all blogs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Blogs"
+        "500":
+          description: Internal server error
+      # Other path definitions...
+  # Add other path definitions here if needed...
+
+  /api/v1/blogs/add:
+    post:
+      summary: Add a new blog
+      description: Add a new blog entry to the database.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                picture:
+                  type: file
+      responses:
+        "200":
+          description: Blog added successfully
+        "500":
+          description: Internal server error
+
+  #Specific blogs
+  /api/v1/blogs/specificBlogs/{blog_id}:
+    get:
+      summary: Get specific blog
+      description: Retrieve a specific blog entry from the database by ID.
+      parameters:
+        - in: path
+          name: blog_id
+          schema:
+            type: string
+          required: true
+          description: ID of the blog to retrieve
+      responses:
+        "200":
+          description: A specific blog entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Blogs"
+        "500":
+          description: Internal server error
+
+  # Add a new path definition for updating a specific blog entry
+  /api/v1/blogs/edit/{id}:
+    patch:
+      summary: Update a specific blog entry
+      description: Update a specific blog entry in the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the blog to update
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                picture:
+                  type: string
+      responses:
+        "200":
+          description: Blog updated successfully
+        "404":
+          description: Blog not found
+        "500":
+          description: Internal server error
+
+  # Add a new path definition for deleting a specific blog entry
+  /api/v1/blogs/delete/{id}:
+    delete:
+      summary: Delete a specific blog entry
+      description: Delete a specific blog entry from the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the blog to delete
+      responses:
+        "200":
+          description: Blog deleted successfully
+        "404":
+          description: Blog not found
+        "500":
+          description: Internal server error
+
+  # Get all gallery images (for client)
+  /api/v1/gallery/all:
+    get:
+      summary: Get all gallery images
+      description: Retrieve all gallery images for client use.
+      responses:
+        "200":
+          description: A list of all gallery images
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Gallery"
+        "500":
+          description: Internal server error
+
+  # Get all gallery images (for admin)
+  /api/v1/gallery/allAdmin:
+    get:
+      summary: Get all gallery images for admin
+      description: Retrieve all gallery images for admin use.
+      responses:
+        "200":
+          description: A list of all gallery images
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Gallery"
+        "500":
+          description: Internal server error
+
+  # Update gallery images
+  /api/v1/gallery/update:
+    patch:
+      summary: Update gallery images
+      description: Update gallery images with new images.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                gallery:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        "200":
+          description: Gallery updated successfully
+        "500":
+          description: Internal server error
+  # Get all main details
+  /api/v1/mainDetails/all:
+    get:
+      summary: Get all main details
+      description: Retrieve all main details.
+      responses:
+        "200":
+          description: A list of all main details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  company_name:
+                    type: string
+                  phone_number:
+                    type: string
+                  email:
+                    type: string
+                  logo:
+                    type: string
+                  about:
+                    type: string
+                  copyRights:
+                    type: string
+                  location:
+                    type: string
+                  hero:
+                    type: string
+                  welcome:
+                    type: string
+                  whatWeDoImage:
+                    type: string
+                  whatWeDo:
+                    type: string
+                  whoWeAre:
+                    type: string
+        "500":
+          description: Internal server error
+
+  # Update main details
+  /api/v1/mainDetails/updateMainDetails:
+    patch:
+      summary: Update main details
+      description: Update main details such as company name, phone number, etc.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                company_name:
+                  type: string
+                phone_number:
+                  type: string
+                email:
+                  type: string
+                about:
+                  type: string
+                copyRights:
+                  type: string
+                location:
+                  type: string
+                welcome:
+                  type: string
+                whatWeDo:
+                  type: string
+                whoWeAre:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
+                hero:
+                  type: string
+                  format: binary
+                whatWeDoImage:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Updated Successfully
+        "400":
+          description: Bad request, check your request format
+        "500":
+          description: Internal server error
+
+  # Get all news articles
+  /api/v1/news-article/all:
+    get:
+      summary: Get all news articles
+      description: Retrieve all news articles.
+      responses:
+        "200":
+          description: A list of all news articles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  getAllArticles:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/NewsArticles"
+        "500":
+          description: Internal server error
+
+  # Get specific news article
+  /api/v1/news-article/specificNews/{news_id}:
+    get:
+      summary: Get specific news article
+      description: Retrieve a specific news article from the database by ID.
+      parameters:
+        - in: path
+          name: news_id
+          schema:
+            type: string
+          required: true
+          description: ID of the news article to retrieve
+      responses:
+        "200":
+          description: A specific news article
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticles"
+        "500":
+          description: Internal server error
+
+  # Add a new news article
+  /api/v1/news-article/add:
+    post:
+      summary: Add a new news article
+      description: Add a new news article to the database.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                picture:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: News article added successfully
+        "500":
+          description: Internal server error
+
+  # Update a news article
+  /api/v1/news-article/edit/{id}:
+    patch:
+      summary: Update a news article
+      description: Update a news article in the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the news article to update
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                picture:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: News article updated successfully
+        "500":
+          description: Internal server error
+
+  # Delete a news article
+  /api/v1/news-article/delete/{id}:
+    delete:
+      summary: Delete a news article
+      description: Delete a news article from the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the news article to delete
+      responses:
+        "200":
+          description: News article deleted successfully
+        "500":
+          description: Internal server error
+
+    # Get all details for Page 1
+  /api/v1/page-one/all:
+    get:
+      summary: Get all details for Page 1
+      description: Retrieve all details for Page 1.
+      responses:
+        "200":
+          description: Details for Page 1
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page1Details:
+                    type: object
+                    properties:
+                      basicDetails:
+                        $ref: "#/components/schemas/Page1BasicDetails"
+                      teamMembers:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Team"
+                      newsArticles:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/NewsArticles"
+                      services:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Services"
+                      gallery:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Gallery"
+        "500":
+          description: Internal server error
+
+  # Get all services
+  /api/v1/service/all:
+    get:
+      summary: Get all services
+      description: Retrieve all services.
+      responses:
+        "200":
+          description: A list of all services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Services"
+        "500":
+          description: Internal server error
+
+  # Add a new service
+  /api/v1/service/add:
+    post:
+      summary: Add a new service
+      description: Add a new service to the database.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                picture:
+                  type: string
+      responses:
+        "200":
+          description: Service added successfully
+        "500":
+          description: Internal server error
+
+  # Get specific service
+  /api/v1/service/specificService/{id}:
+    get:
+      summary: Get specific service
+      description: Retrieve a specific service from the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the service to retrieve
+      responses:
+        "200":
+          description: A specific service
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Services"
+        "500":
+          description: Internal server error
+
+  # Update a service by ID
+  /api/v1/service/edit/{id}:
+    patch:
+      summary: Update a service
+      description: Update a service in the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the service to update
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                picture:
+                  type: string
+      responses:
+        "200":
+          description: Service updated successfully
+        "500":
+          description: Internal server error
+
+  # Delete a service by ID
+  /api/v1/service/delete/{id}:
+    delete:
+      summary: Delete a service
+      description: Delete a service from the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the service to delete
+      responses:
+        "200":
+          description: Service deleted successfully
+        "500":
+          description: Internal server error
+
+    # Get all team members
+  /api/v1/team-member/all:
+    get:
+      summary: Get all team members
+      description: Retrieve all team members.
+      responses:
+        "200":
+          description: A list of all team members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Team"
+        "500":
+          description: Internal server error
+
+  # Add a new team member
+  /api/v1/team-member/add:
+    post:
+      summary: Add a new team member
+      description: Add a new team member to the database.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                designation:
+                  type: string
+                post:
+                  type: string
+                image:
+                  type: string
+      responses:
+        "200":
+          description: Team member added successfully
+        "500":
+          description: Internal server error
+
+  # Get specific team member
+  /api/v1/team-member/getSingleMember/{id}:
+    get:
+      summary: Get specific team member
+      description: Retrieve a specific team member from the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the team member to retrieve
+      responses:
+        "200":
+          description: A specific team member
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Team"
+        "500":
+          description: Internal server error
+
+  # Update a team member by ID
+  /api/v1/team-member/edit/{id}:
+    patch:
+      summary: Update a team member
+      description: Update a team member in the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the team member to update
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                designation:
+                  type: string
+                post:
+                  type: string
+                image:
+                  type: string
+      responses:
+        "200":
+          description: Team member updated successfully
+        "500":
+          description: Internal server error
+
+  # Delete a team member by ID
+  /api/v1/team-member/delete/{id}:
+    delete:
+      summary: Delete a team member
+      description: Delete a team member from the database by ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the team member to delete
+      responses:
+        "204":
+          description: Team member deleted successfully
+        "500":
+          description: Internal server error
