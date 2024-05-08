@@ -6,7 +6,6 @@ import {
   getSpecificNews,
   updateNewsArticleById,
 } from "../controller/newsArticles-controllers";
-import { authMiddleware } from "../middleware/auth.middleware";
 import multer from "multer";
 
 const upload = multer({ dest: "uploads/news" });

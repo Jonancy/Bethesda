@@ -52,22 +52,6 @@ model Gallery {
   updatedAt DateTime? @updatedAt
 }
 
-// model Designation {
-//   id        Int       @id @unique @default(autoincrement())
-//   type      String    @unique
-//   teams     Team[]
-//   createdAt DateTime? @default(now())
-//   updatedAt DateTime? @updatedAt
-// }
-
-// model Post {
-//   id        Int       @id @unique @default(autoincrement())
-//   type      String    @unique
-//   teams     Team[]
-//   createdAt DateTime? @default(now())
-//   updatedAt DateTime? @updatedAt
-// }
-
 model Team {
   id          String    @id @unique @default(cuid())
   name        String
@@ -77,22 +61,6 @@ model Team {
   createdAt   DateTime? @default(now())
   updatedAt   DateTime? @updatedAt
 }
-
-// enum Designation {
-//   Chair_Person
-//   Vice_Chair_Person
-//   Treasurer
-//   Advisory
-//   Board_Member
-//   Finance_Advisory
-// }
-
-// model TeamMembers {
-//   id          String      @id @unique @default(cuid())
-//   name        String
-//   profile     String
-//   designation Designation
-// }
 
 model NewsArticles {
   id        String    @id @unique @default(cuid())

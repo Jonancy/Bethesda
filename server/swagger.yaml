@@ -1,9 +1,8 @@
 openapi: 3.0.0
 info:
-  title: Your API
+  title: Bethesda API
   version: 1.0.0
-  description: Your API description
-  # Other info fields...
+  description: Bethesda a language consultancy API documentation
 
 components:
   schemas:

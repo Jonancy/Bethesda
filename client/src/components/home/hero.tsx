@@ -32,7 +32,7 @@ export default function Hero({ hero, welcome }: HeroDetails) {
                 height="24"
               />
             </svg>
-            <span className="relative">{welcome}</span>
+            <span className="relative font-semibold ">{welcome}</span>
           </span>{" "}
         </h2>
         <p className="w-[40%] text-center text"></p>

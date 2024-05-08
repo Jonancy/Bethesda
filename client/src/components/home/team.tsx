@@ -18,11 +18,11 @@ export default function Team({ teamMembers }: { teamMembers: TeamMembers[] }) {
 
       <div className="grid  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full md:gap-7 gap-3 sm:gap-5 lg:gap-8 xl:gap-12">
         {Array.isArray(teamMembers) &&
-          teamMembers?.slice(0, 3)?.map((member, index) => (
+          teamMembers?.slice(0, 4)?.map((member, index) => (
             <div className="rounded-xl" key={index}>
               <img
-                className="h-[20rem] object-cover rounded-t-xl"
-                src={imag}
+                className="h-[20rem] w-full object-cover rounded-t-xl"
+                src={member?.profile}
                 alt={`${member?.name}'s profile`}
               />
               <div className="bg-primaryColor flex flex-col justify-center items-center p-4 rounded-b-xl">

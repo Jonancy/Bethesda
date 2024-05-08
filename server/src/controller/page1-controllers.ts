@@ -5,7 +5,7 @@ export const getPage1Details = async (req: Request, res: Response) => {
   try {
     const basicDetails = await prisma.page1.findFirst();
     const teamMembers = await prisma.team.findMany({
-      take: 3,
+      take: 4,
     });
 
     const newsArticles = await prisma.newsArticles.findMany({

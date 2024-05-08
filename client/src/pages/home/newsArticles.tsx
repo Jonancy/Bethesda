@@ -65,13 +65,13 @@ export default function NewsArticlesLists() {
       </div> */}
       <ul className="grid gap-x-8 gap-y-10 mt-16 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4">
         {newsLists?.map((items, key) => (
-          <li className="w-full mx-auto group sm:max-w-sm" key={key}>
-            <a href={items.title}>
+          <li className="w-full h-full mx-auto group sm:max-w-sm" key={key}>
+            <Link to={`/news-articles/specific-news/${items?.id}`}>
               <img
                 src={items.picture}
                 loading="lazy"
                 alt={items.title}
-                className="w-full rounded-lg"
+                className="w-full rounded-lg h-[20rem] object-cover"
               />
               <div className="mt-3 space-y-2">
                 <span className="block text-sm">
@@ -84,7 +84,7 @@ export default function NewsArticlesLists() {
                   {items.content}
                 </p>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
